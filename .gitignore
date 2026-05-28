@@ -48,3 +48,14 @@ po/*~
 # RStudio Connect folder
 rsconnect/
 .DS_Store
+
+# Cached model fits and heavy decomposition outputs
+data/*.rds
+data/results/*.csv
+
+# Generated figures (regenerate via R/analysis scripts)
+figures/*.pdf
+
+# Quarto
+docs/*_cache/
+docs/*_files/
