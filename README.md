@@ -2,8 +2,8 @@
 
 Code accompanying the NeurIPS draft on **agent evaluation leaderboard reliability**: mixed-effects and Bayesian variance decompositions of HAL benchmark scores, plus nonparametric (`energy::disco`) baselines.
 
-- Paper: [`NeurIPS_Agent_Leaderboard_Reliability_draft.pdf`](NeurIPS_Agent_Leaderboard_Reliability_draft.pdf)
-- Narrative walkthrough: [`docs/reliability_models.qmd`](docs/reliability_models.qmd) (render with Quarto)
+<!-- - Paper: [`NeurIPS_Agent_Leaderboard_Reliability_draft.pdf`](NeurIPS_Agent_Leaderboard_Reliability_draft.pdf)
+- Narrative walkthrough: [`docs/reliability_models.qmd`](docs/reliability_models.qmd) (render with Quarto) -->
 
 ## Repository layout
 
