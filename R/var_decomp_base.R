@@ -36,6 +36,8 @@ fastverse_extend(Rfast,dtplyr,
                  parallelDist
 )
 
+
+# Load data. ---------
 df = fread(here("data/hal_parsed_response_matrix7.csv")) |> 
   mutate(model_name = str_split_i(model_name,":",1),
             model_name = case_when(
@@ -43,26 +45,115 @@ df = fread(here("data/hal_parsed_response_matrix7.csv")) |>
               model_name == "claude-sonnet-4.5" ~ "claude-sonnet-4-5",
               TRUE ~ model_name
             ),
-            model_name = str_c(model_name,reasoning_effort)) # |> 
-  # mutate(benchmark = str_split_i(str_split_i(run_id,agent_name ,1), "_",1)) 
-  # mutate(benchmark = str_split_i(str_split_i(run_id,str_split_i(agent_name,"_",1) ,1),"_",1))
+            model_name = str_c(model_name,reasoning_effort))
+
+## dataset with tokens included for multivariate model (optional)
+# dft = fread(here("data/hal_parsed_response_matrix_tok.csv")) |> 
+#   mutate(model_name = str_split_i(model_name,":",1),
+#          model_name = case_when(
+#            model_name == "DeepSeek-R1" ~ "deepseek-r1",
+#            model_name == "claude-sonnet-4.5" ~ "claude-sonnet-4-5",
+#            TRUE ~ model_name
+#          ),
+#          model_name = str_c(model_name,reasoning_effort)) 
 
 
-dft = fread(here("data/hal_parsed_response_matrix_tok.csv")) |> 
-  mutate(model_name = str_split_i(model_name,":",1),
-         model_name = case_when(
-           model_name == "DeepSeek-R1" ~ "deepseek-r1",
-           model_name == "claude-sonnet-4.5" ~ "claude-sonnet-4-5",
-           TRUE ~ model_name
-         ),
-         model_name = str_c(model_name,reasoning_effort)) 
 
 
-# Functions -------
-## Bayes ---------
+# Helper functions for extracting Bayesian variance components and calculating Ep2 ---------
+get_mod_ep2 = function(drawlist,nitems=100,nbench = 1){
+  m_ep2 = drawlist[["sd_model_name__Intercept"]]^2/(drawlist[["sd_model_name__Intercept"]]^2+ drawlist[["sd_benchmark:model_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_model_name:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
+  make_draws_stats(m_ep2)
+}
+Vectorize(get_mod_ep2)
 
 
-## BAYES create combination stats -------
+get_bmod_ep2 = function(drawlist,nitems=100,nbench = 1){
+  m_ep2 = drawlist[["sd_benchmark:model_name__Intercept"]]^2/(drawlist[["sd_benchmark:model_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
+  make_draws_stats(m_ep2)
+}
+Vectorize(get_bmod_ep2)
+
+
+get_agnt_ep2 = function(drawlist,nitems=100,nbench = 1){
+  a_ep2 = drawlist[["sd_agent_name__Intercept"]]^2/(drawlist[["sd_agent_name__Intercept"]]^2+ drawlist[["sd_benchmark:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_model_name:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
+  make_draws_stats(a_ep2)
+}
+Vectorize(get_agnt_ep2)
+
+get_bagnt_ep2 = function(drawlist,nitems=100,nbench = 1){
+  a_ep2 = drawlist[["sd_benchmark:agent_name__Intercept"]]^2/(drawlist[["sd_benchmark:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
+  make_draws_stats(a_ep2)
+}
+Vectorize(get_bagnt_ep2)
+
+
+get_agmod_ep2 = function(drawlist,nitems=100,nbench = 1){
+  (drawlist[["sd_model_name:agent_name__Intercept"]]^2/(drawlist[["sd_model_name:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))) |> make_draws_stats()
+}
+Vectorize(get_agmod_ep2)
+
+
+get_bagmod_ep2 = function(drawlist,nitems=100,nbench = 1){
+  (drawlist[["sd_benchmark:model_name:agent_name__Intercept"]]^2/(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) +drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench)+ drawlist[["sigma"]]^2/(nitems*nbench))) |> make_draws_stats()
+}
+Vectorize(get_bagmod_ep2)
+
+
+
+
+# Inverse Logit transformed functions for generalized space "g" to observation space ---------
+
+plogis = function(x) exp(x)/(1+exp(x))
+
+
+get_mod_ep2g = function(drawlist,nitems=100,nbench = 1){
+  m_ep2 = plogis(drawlist[["sd_model_name__Intercept"]]^2)/(plogis(drawlist[["sd_model_name__Intercept"]]^2) + 
+                                                              plogis(drawlist[["sd_benchmark:model_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
+  make_draws_stats(m_ep2)
+}
+Vectorize(get_mod_ep2g)
+
+
+get_bmod_ep2g = function(drawlist,nitems=100,nbench = 1){
+  m_ep2 = plogis(drawlist[["sd_benchmark:model_name__Intercept"]]^2)/(plogis(drawlist[["sd_benchmark:model_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
+  make_draws_stats(m_ep2)
+}
+Vectorize(get_bmod_ep2g)
+
+
+get_agnt_ep2g = function(drawlist,nitems=100,nbench = 1){
+  a_ep2 = (plogis(drawlist[["sd_agent_name__Intercept"]]^2))/(plogis(drawlist[["sd_agent_name__Intercept"]]^2)+ plogis(drawlist[["sd_benchmark:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
+  make_draws_stats(a_ep2)
+}
+Vectorize(get_agnt_ep2g)
+
+get_bagnt_ep2g = function(drawlist,nitems=100,nbench = 1){
+  a_ep2 = (plogis(drawlist[["sd_benchmark:agent_name__Intercept"]]^2))/(plogis(drawlist[["sd_benchmark:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
+  make_draws_stats(a_ep2)
+}
+Vectorize(get_bagnt_ep2g)
+
+
+get_agmod_ep2g = function(drawlist,nitems=100,nbench = 1){
+  (((plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)))/(plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)+
+                                                                      plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + 
+                                                                      plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))) |> make_draws_stats()
+}
+Vectorize(get_agmod_ep2g)
+
+
+get_bagmod_ep2g = function(drawlist,nitems=100,nbench = 1){
+  (((plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept"]]^2)))/(plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) +
+                                                                                         plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench)+ 
+                                                                                         plogis(drawlist[["sigma"]]^2)/(nitems*nbench)))) |> make_draws_stats()
+}
+Vectorize(get_bagmod_ep2g)
+
+
+
+## Bayes statistics from posterior draws ---------
+### BAYES create combination stats -------
 make_draws_stats = function(drawstat,roperange = c(0,0.005)){
   res = summary(drawstat) |> 
     bind_cols(bayestestR::p_significance(drawstat,threshold = 0.05) |> 
@@ -73,7 +164,6 @@ make_draws_stats = function(drawstat,roperange = c(0,0.005)){
                 select(-Parameter)
               ,
               bayestestR::p_map(drawstat,
-                                # null = 0.000001,
                                 method="KernSmooth"
               ) |> 
                 select(-Parameter),
@@ -88,11 +178,6 @@ make_draws_stats = function(drawstat,roperange = c(0,0.005)){
     )
   res
 }
-
-convert_to_percent_of_var_draws = function(draws,term){
-  draws[[term]]^2 / sum(draws[[term]]^2)
-}
-
 
 
 
@@ -119,7 +204,7 @@ m = df |> lmer(score ~ 1
                na.action = na.exclude,
                data = _,
                control = lmerControl(optimizer = "bobyqa", 
-                                     calc.derivs = FALSE,
+                                     # calc.derivs = FALSE,
                                      optCtrl = list(maxfun = 2e5))
 )
 
@@ -146,10 +231,6 @@ toc()
 
 
 
-
-
-
-
 ## GLME model-------
 
 tic()
@@ -169,9 +250,9 @@ gm = df |> glmer(score ~ 1
                na.action = na.exclude,
                data = _,
                family = "binomial",
-               nAGQ=0,
+               # nAGQ=0, # keep nAGQ at default for more accurate variance component estimation via Laplace approx, but can set to 0 for faster fitting if needed
                control = glmerControl(optimizer = "bobyqa", 
-                                     calc.derivs = FALSE,
+                                     # calc.derivs = FALSE,
                                      optCtrl = list(maxfun = 2e5))
 )
 
@@ -245,53 +326,8 @@ gmvar2
 toc()
 
 
-
-
-tic()
-gm3 = df |> glmer(score ~ 0
-                  + benchmark
-                  + (1|benchmark:task_id)
-                  + (0+benchmark|model_name)
-                  + (0+benchmark|agent_name)
-                  + (1|benchmark:task_id:model_name)
-                  + (1|benchmark:task_id:agent_name)
-                  + (0+benchmark|model_name:agent_name)
-                  ,
-                  na.action = na.exclude,
-                  data = _,
-                  family = "binomial",
-                  nAGQ=0,
-                  control = glmerControl(optimizer = "bobyqa", 
-                                         calc.derivs = FALSE,
-                                         optCtrl = list(maxfun = 2e5))
-)
-
-gm3 |> summary()
-
-gmvar3 = gm3  |>
-  VarCorr() |>
-  janitor::clean_names() |>
-  as_tibble() |>
-  filter(is.na(var2)) |>
-  bind_rows(as_tibble_row(list(grp="Residual",var1=NA,vcov = pi^2/3))) |> 
-  mutate(
-    pct = round(vcov / sum(vcov) * 100, 2),
-    agent = str_detect(grp, "agent"),
-    bench = str_detect(grp, "benchmark"),
-    model = str_detect(grp, "model"),
-    task = str_detect(grp, "task"),
-    run = str_detect(grp, "run"),
-    resid = grp == "Residual",
-    model_agent = model & agent,
-    across(agent:model_agent, \(x) vcov * as.numeric(x))
-  )
-gmvar3
-toc()
-
-
-
 # Bayes --------
-## linear model
+## linear model ------------
 
 tic()
 bm = df |> brm(score ~ 1
@@ -329,110 +365,17 @@ bm |> summary()
 
 toc()
 
-# get draws
+# get draws from posterior ---------
 bmd = as_draws_rvars(bm)
 
-# make pct summary
+# make pct summary from draws
 bms = lapply(bmd[str_starts(names(bmd),"sd|sig")], function(X) make_draws_stats(X^2/reduce(bmd[str_starts(names(bmd),"sd|sig")],\(acc,nxt) acc + (nxt^2)))) |> list_rbind(names_to = "var")
 bms
 
 
-nitems = 100
-
-get_mod_ep2 = function(drawlist,nitems=100,nbench = 1){
-m_ep2 = drawlist[["sd_model_name__Intercept"]]^2/(drawlist[["sd_model_name__Intercept"]]^2+ drawlist[["sd_benchmark:model_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_model_name:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
-make_draws_stats(m_ep2)
-}
-Vectorize(get_mod_ep2)
 
 
-get_bmod_ep2 = function(drawlist,nitems=100,nbench = 1){
-  m_ep2 = drawlist[["sd_benchmark:model_name__Intercept"]]^2/(drawlist[["sd_benchmark:model_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
-  make_draws_stats(m_ep2)
-}
-Vectorize(get_bmod_ep2)
-
-
-get_agnt_ep2 = function(drawlist,nitems=100,nbench = 1){
-a_ep2 = drawlist[["sd_agent_name__Intercept"]]^2/(drawlist[["sd_agent_name__Intercept"]]^2+ drawlist[["sd_benchmark:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_model_name:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
-make_draws_stats(a_ep2)
-}
-Vectorize(get_agnt_ep2)
-
-get_bagnt_ep2 = function(drawlist,nitems=100,nbench = 1){
-  a_ep2 = drawlist[["sd_benchmark:agent_name__Intercept"]]^2/(drawlist[["sd_benchmark:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2/(nitems*nbench)+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))  
-  make_draws_stats(a_ep2)
-}
-Vectorize(get_bagnt_ep2)
-
-
-get_agmod_ep2 = function(drawlist,nitems=100,nbench = 1){
-(drawlist[["sd_model_name:agent_name__Intercept"]]^2/(drawlist[["sd_model_name:agent_name__Intercept"]]^2+drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench) + drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) + drawlist[["sigma"]]^2/(nitems*nbench))) |> make_draws_stats()
-}
-Vectorize(get_agmod_ep2)
-
-
-get_bagmod_ep2 = function(drawlist,nitems=100,nbench = 1){
-  (drawlist[["sd_benchmark:model_name:agent_name__Intercept"]]^2/(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) +drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2/(nitems*nbench)+ drawlist[["sigma"]]^2/(nitems*nbench))) |> make_draws_stats()
-}
-Vectorize(get_bagmod_ep2)
-
-
-
-
-# Inverse Logit transformed functions for generalized space "g" ---------
-
-plogis = function(x) exp(x)/(1+exp(x))
-
-
-get_mod_ep2g = function(drawlist,nitems=100,nbench = 1){
-  m_ep2 = plogis(drawlist[["sd_model_name__Intercept"]]^2)/(plogis(drawlist[["sd_model_name__Intercept"]]^2) + 
-                                                              plogis(drawlist[["sd_benchmark:model_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
-  make_draws_stats(m_ep2)
-}
-Vectorize(get_mod_ep2g)
-
-
-get_bmod_ep2g = function(drawlist,nitems=100,nbench = 1){
-  m_ep2 = plogis(drawlist[["sd_benchmark:model_name__Intercept"]]^2)/(plogis(drawlist[["sd_benchmark:model_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
-  make_draws_stats(m_ep2)
-}
-Vectorize(get_bmod_ep2g)
-
-
-get_agnt_ep2g = function(drawlist,nitems=100,nbench = 1){
-  a_ep2 = (plogis(drawlist[["sd_agent_name__Intercept"]]^2))/(plogis(drawlist[["sd_agent_name__Intercept"]]^2)+ plogis(drawlist[["sd_benchmark:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
-  make_draws_stats(a_ep2)
-}
-Vectorize(get_agnt_ep2g)
-
-get_bagnt_ep2g = function(drawlist,nitems=100,nbench = 1){
-  a_ep2 = (plogis(drawlist[["sd_benchmark:agent_name__Intercept"]]^2))/(plogis(drawlist[["sd_benchmark:agent_name__Intercept"]]^2)+plogis(drawlist[["sd_benchmark:task_id:agent_name__Intercept"]]^2)/(nitems*nbench)+plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))  
-  make_draws_stats(a_ep2)
-}
-Vectorize(get_bagnt_ep2g)
-
-
-get_agmod_ep2g = function(drawlist,nitems=100,nbench = 1){
-  (((plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)))/(plogis(drawlist[["sd_model_name:agent_name__Intercept"]]^2)+
-                                                                     plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench) + 
-                                                                     plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2)/(nbench) + plogis(drawlist[["sigma"]]^2)/(nitems*nbench))) |> make_draws_stats()
-}
-Vectorize(get_agmod_ep2g)
-
-
-get_bagmod_ep2g = function(drawlist,nitems=100,nbench = 1){
-(  ((plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept"]]^2)))/(plogis(drawlist[["sd_benchmark:model_name:agent_name__Intercept" ]]^2/(nbench) +
-                                                                                       plogis(drawlist[["sd_benchmark:task_id:model_name:agent_name__Intercept"]]^2)/(nitems*nbench)+ 
-                                                                                       plogis(drawlist[["sigma"]]^2)/(nitems*nbench)))) |> make_draws_stats()
-}
-Vectorize(get_bagmod_ep2g)
-
-
-
-
-## Bayes Generalized -----
-
+## Generalized Bayes estimation  -----
 
 tic()
 gbm = df |> brm(score ~ 1
@@ -482,8 +425,7 @@ gbms
 
 
 
-### Bayes MV --------
-
+### Bayes MV (simple scaling) --------
 
 tic()
 bm2 = dft |> 
@@ -539,7 +481,7 @@ bms2tok
 
 
 
-
+# Non parametric deviance/distribution decomposition --------
   
 n_iter = 3
 n_i = 100
@@ -661,13 +603,13 @@ combdf |> group_by(method,facet) |>
 
 
 
-# combined plot --------
+# combined plots --------
 plot_ni = 500
 tibble(nitems=1:plot_ni, m_ep2 = get_mod_ep2(bmd,nitems = nitems) |> pull(median), a_ep2 = get_agnt_ep2(bmd,nitems = nitems) |> pull(median)) |> pivot_longer(m_ep2:a_ep2,names_to = "facet",values_to = "bayes")|> inner_join(tibble(nitems=1:plot_ni, m_ep2 = get_mod_ep2(gbmd,nitems = nitems) |> pull(median), a_ep2 = get_agnt_ep2(gbmd,nitems = nitems) |> pull(median)) |> pivot_longer(m_ep2:a_ep2,names_to = "facet",values_to = "gbayes") |> distinct())  |> inner_join(tibble(nitems=1:plot_ni, m_ep2 = mvar[mvar$grp=="model_name","vcov"][[1]]/(mvar[mvar$grp=="model_name","vcov"][[1]]+mvar[mvar$grp=="benchmark_model_name","vcov"][[1]]+mvar[mvar$grp=="model_name_agent_name","vcov"][[1]]+mvar[mvar$grp=="benchmark_model_name_agent_name","vcov"][[1]]+mvar[mvar$grp=="benchmark_task_id_model_name","vcov"][[1]]/(nitems)+mvar[mvar$grp=="benchmark_task_id_model_name_agent_name","vcov"][[1]]/(nitems)+mvar[mvar$grp=="Residual","vcov"][[1]]/(nitems)), a_ep2 =mvar[mvar$grp=="agent_name","vcov"][[1]]/(mvar[mvar$grp=="agent_name","vcov"][[1]]+mvar[mvar$grp=="benchmark_agent_name","vcov"][[1]]+mvar[mvar$grp=="model_name_agent_name","vcov"][[1]]+mvar[mvar$grp=="benchmark_model_name_agent_name","vcov"][[1]]+mvar[mvar$grp=="benchmark_task_id_agent_name","vcov"][[1]]/(nitems)+mvar[mvar$grp=="benchmark_task_id_model_name_agent_name","vcov"][[1]]/(nitems)+mvar[mvar$grp=="Residual","vcov"][[1]]/(nitems)) ) |> pivot_longer(m_ep2:a_ep2,names_to = "facet",values_to = "lmer") |> distinct()) |> inner_join(tibble(nitems=1:plot_ni, m_ep2 = gmvar[gmvar$grp=="model_name","vcov"][[1]]/(gmvar[gmvar$grp=="model_name","vcov"][[1]]+gmvar[gmvar$grp=="benchmark_model_name","vcov"][[1]]+gmvar[gmvar$grp=="model_name_agent_name","vcov"][[1]]+gmvar[gmvar$grp=="benchmark_model_name_agent_name","vcov"][[1]]+gmvar[gmvar$grp=="benchmark_task_id_model_name","vcov"][[1]]/(nitems)+gmvar[gmvar$grp=="benchmark_task_id_model_name_agent_name","vcov"][[1]]/(nitems)+gmvar[gmvar$grp=="Residual","vcov"][[1]]/(nitems)), a_ep2 =gmvar[gmvar$grp=="agent_name","vcov"][[1]]/(gmvar[gmvar$grp=="agent_name","vcov"][[1]]+gmvar[gmvar$grp=="benchmark_agent_name","vcov"][[1]]+gmvar[gmvar$grp=="model_name_agent_name","vcov"][[1]]+gmvar[gmvar$grp=="benchmark_model_name_agent_name","vcov"][[1]]+gmvar[gmvar$grp=="benchmark_task_id_agent_name","vcov"][[1]]/(nitems)+gmvar[gmvar$grp=="benchmark_task_id_model_name_agent_name","vcov"][[1]]/(nitems)+gmvar[gmvar$grp=="Residual","vcov"][[1]]/(nitems)) ) |> pivot_longer(m_ep2:a_ep2,names_to = "facet",values_to = "glmer") |> distinct()) |> inner_join(tibble(nitems=1:plot_ni, m_ep2 = 310/(310+3610/nitems+684+779+889+4392/nitems),a_ep2=311/(311+2022/nitems+684+584+889+4392/nitems)) |> pivot_longer(m_ep2:a_ep2,names_to = "facet",values_to = "nonp") |> distinct()) |> pivot_longer(bayes:nonp, names_to = "method",values_to = "rel") |> ggplot(aes(x=nitems,y=rel,color=facet,linetype=method)) + geom_line() + theme_minimal() + scale_x_log10()
 
 
 
-
+# Bayes plots for paper --------
 
 ## Bayes CIs --------
 ### plot across 1 benchmark -------
@@ -725,7 +667,7 @@ bayescidf |> pivot_longer(m_ep2:am_ep2_hi,
 ### plot across 1 benchmark -------
 
 
-plot_ni = 300
+plot_ni = 350
 n_bench = 1
 gbayescidf1 = tibble(nitems=1:plot_ni, m_ep2 = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),   
                     m_ep2_low = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
@@ -749,7 +691,7 @@ gbayescidf1 |>
                            values_to = "bayes") |> 
   mutate(val = if_else(is.na(val),"est",val)) |> 
   pivot_wider(names_from = val, values_from = bayes) |> 
-  filter(facet=="m") |> 
+  filter(facet%in%c("m","a","am")) |> 
   ggplot(aes(x=nitems,y=est,color = facet,fill=facet)) +
   geom_ribbon(aes(x = nitems,y=est,ymin = low,ymax = hi),alpha=0.2,linewidth = 0) +
   geom_line(linewidth=1.5) +
@@ -757,8 +699,7 @@ gbayescidf1 |>
   theme_minimal()+
   ylim(c(0, 1)) +
   labs(x = "Number of Agentic Tasks", y = expression("Estimated Reliability: E"*hat(rho)^2)) +
-  theme(text=element_text(family="times",size = 15), legend.position = "none")
-
+  theme(text=element_text(family="times",size = 15), legend.position = "bottom")
 
 
 
@@ -767,16 +708,47 @@ gbayescidf1 |>
 
 plot_ni = 50
 n_bench = 7
-gbayescidf = tibble(nitems=1:plot_ni, m_ep2 = get_mod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),   
-                   m_ep2_low = get_mod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
-                   m_ep2_hi = get_mod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
-                   a_ep2 = get_agnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
-                   a_ep2_low = get_agnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
-                   a_ep2_hi = get_agnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
-                   am_ep2 = get_agmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
-                   am_ep2_low = get_agmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
-                   am_ep2_hi = get_agmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+gbayescidf = tibble(nitems=1:plot_ni, m_ep2 = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),   
+                   m_ep2_low = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                   m_ep2_hi = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+                   a_ep2 = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
+                   a_ep2_low = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                   a_ep2_hi = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+                   am_ep2 = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
+                   am_ep2_low = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                   am_ep2_hi = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
 )
+
+
+plot_ni = 14
+n_bench = 25
+gbayescidf25 = tibble(nitems=1:plot_ni, m_ep2 = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),   
+                    m_ep2_low = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                    m_ep2_hi = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+                    a_ep2 = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
+                    a_ep2_low = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                    a_ep2_hi = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+                    am_ep2 = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
+                    am_ep2_low = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                    am_ep2_hi = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+)
+
+plot_ni = 175
+n_bench = 2
+gbayescidf2 = tibble(nitems=1:plot_ni, m_ep2 = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),   
+                      m_ep2_low = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                      m_ep2_hi = get_bmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+                      a_ep2 = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
+                      a_ep2_low = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                      a_ep2_hi = get_bagnt_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+                      am_ep2 = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(mean),
+                      am_ep2_low = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q5),
+                      am_ep2_hi = get_bagmod_ep2g(gbmd,nitems = nitems,nbench=n_bench) |> pull(q95),
+)
+
+
+
+
 
 
 gbayescidf |> pivot_longer(m_ep2:am_ep2_hi,
@@ -786,7 +758,7 @@ gbayescidf |> pivot_longer(m_ep2:am_ep2_hi,
   mutate(val = if_else(is.na(val),"est",val),
          nitems = nitems*7) |> 
   pivot_wider(names_from = val, values_from = bayes) |> 
-  filter(facet=="m") |> 
+  filter(facet%in%c("m","a","am")) |> 
   ggplot(aes(x=nitems,y=est,color = facet,fill=facet)) +
   geom_ribbon(aes(x = nitems,y=est,ymin = low,ymax = hi),alpha=0.12,linewidth = 0) +
   geom_line(linewidth=1.5) +
@@ -794,7 +766,7 @@ gbayescidf |> pivot_longer(m_ep2:am_ep2_hi,
   theme_minimal()+
   ylim(c(0, 1)) +
   labs(x = "Total Number of Agentic Tasks (divided across 7 benchmarks)", y = expression("Estimated Reliability: E"*hat(rho)^2)) +
-  theme(text=element_text(family="times",size = 15), legend.position = "none")
+  theme(text=element_text(family="times",size = 15), legend.position = "bottom")
 
 
 
@@ -805,22 +777,41 @@ gbayescidf |> pivot_longer(m_ep2:am_ep2_hi,
   mutate(val = if_else(is.na(val),"est",val),
          nitems = nitems*7) |> 
   pivot_wider(names_from = val, values_from = bayes) |> 
-  filter(facet=="m") |> mutate(method = "7 bench") |> bind_rows(
+  filter(facet=="m") |> mutate(Benches_Sampled = "7 benches") |> 
+  bind_rows(
     gbayescidf1 |> pivot_longer(m_ep2:am_ep2_hi,
                                 names_to = c("facet","stat","val"),
                                 names_sep = "_",
                                 values_to = "bayes") |> 
       mutate(val = if_else(is.na(val),"est",val)) |> 
       pivot_wider(names_from = val, values_from = bayes) |> 
-      filter(facet=="m",nitems>6) |> mutate(method = "1 bench")
+      filter(facet=="m",nitems>6) |> mutate(Benches_Sampled = "1 bench")
   ) |>
-  ggplot(aes(x=nitems,y=est,color = method,fill=method)) +
-  # geom_ribbon(aes(x = nitems,y=est,ymin = low,ymax = hi),alpha=0.12,linewidth = 0) +
+  # bind_rows(
+  #   gbayescidf25 |> pivot_longer(m_ep2:am_ep2_hi,
+  #                               names_to = c("facet","stat","val"),
+  #                               names_sep = "_",
+  #                               values_to = "bayes") |> 
+  #     mutate(val = if_else(is.na(val),"est",val),nitems = nitems*25) |> 
+  #     pivot_wider(names_from = val, values_from = bayes) |> 
+  #     filter(facet=="m",nitems>6) |> mutate(Benches_Sampled = "25 benches")
+  # ) |>
+  bind_rows(
+    gbayescidf2 |> pivot_longer(m_ep2:am_ep2_hi,
+                                 names_to = c("facet","stat","val"),
+                                 names_sep = "_",
+                                 values_to = "bayes") |> 
+      mutate(val = if_else(is.na(val),"est",val),nitems = nitems*2) |> 
+      pivot_wider(names_from = val, values_from = bayes) |> 
+      filter(facet=="m",nitems>6) |> mutate(Benches_Sampled = "2 benches")
+  ) |>
+  ggplot(aes(x=nitems,y=est,color = Benches_Sampled,fill=Benches_Sampled)) +
+  geom_ribbon(aes(x = nitems,y=est,ymin = low,ymax = hi),alpha=0.2,linewidth = 0) +
   geom_line(linewidth=1.5) +
   scale_x_log10()+
   theme_minimal()+
   ylim(c(0, 1)) +
-  labs(x = "Number of Agentic Tasks", y = expression("Estimated Reliability: E"*hat(rho)^2)) +
+  labs(x = "Total Number of Agentic Tasks", y = expression("Estimated Reliability: E"*hat(rho)^2)) +
   theme(text=element_text(family="times",size = 15), legend.position = "bottom")
 
 
@@ -1057,9 +1048,6 @@ pointp  |> ggsave(filename = here::here("figures","blups_vs_raw_scoresSE.pdf"),w
 
 
 
-
-
-
 ## Plot ofBLUPs vs raw scores -------
 (pointp = blupdf |> 
    mutate(estimate_intercept = plogis(estimate_intercept),
@@ -1163,17 +1151,16 @@ ranef(gbm, groups= "benchmark:model_name",summary = F)[[1]] |>
   ggplot(aes(x=oldrank,y=median_rank,color=model_name)) + 
   geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "grey") +
   # geom_point() + 
-  # geom_pointrange(aes(ymin=q25,ymax=q75),position = "jitter") +
-  # geom_pointrange(aes(ymin=median_rank-mad,ymax=median_rank+mad),position = "jitter") + 
-  geom_pointrange(aes(ymin=median_rank-1.4826*mad,ymax=median_rank+1.4826*mad),position = "jitter") +
+  # geom_pointrange(aes(ymin=q25,ymax=q75),position = "jitter") + # IQR
+  geom_pointrange(aes(ymin=median_rank-1.4826*mad,ymax=median_rank+1.4826*mad),position = "jitter") + # empirical mad estimated as SE
   # geom_pointrange(aes(ymin=q5,ymax=q95),position = "jitter") + 
   facet_wrap(~benchmark) + 
   theme_minimal() + 
   guides(color = guide_legend(ncol=6)) +
-  labs(x = "Original/Published Rank", y = "Posterior Rank (Median, 1.5xMAD)") +
+  labs(x = "Original/Published Rank", y = "Posterior Rank (Median, 1.48xMAD)") +
   theme(text = element_text(family="times",size = 14), 
         panel.border = element_rect(color = "grey80", fill = NA, size = 1),
-        legend.position = "none",         legend.title = element_blank(),
+        legend.position = "bottom",         legend.title = element_blank(),
         legend.key.size = unit(0.3, "cm"), # Shrinks the symbol boxes
         legend.text = element_text(size = 8),  # Shrinks the labels
         legend.margin = margin(t = 0, r = 0, b = 0, l = 0), # Removes outer padding

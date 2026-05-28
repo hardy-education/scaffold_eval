@@ -79,7 +79,6 @@ make_draws_stats = function(drawstat,roperange = c(0,0.005)){
                 range=roperange
               ) |> 
                 select(-Parameter)
-              
     )
   res
 }
@@ -87,11 +86,6 @@ make_draws_stats = function(drawstat,roperange = c(0,0.005)){
 convert_to_percent_of_var_draws = function(draws,term){
   draws[[term]]^2 / sum(draws[[term]]^2)
 }
-
-
-
-
-
 
 
 # Models =========
@@ -216,7 +210,7 @@ for(b in benches){
                + (1|task_id:model_name)
                + (1|task_id:agent_name)
                + (1|model_name:agent_name)
-               # + (1|task_id:model_name:agent_name)
+               # + (1|task_id:model_name:agent_name) # not enough variation / multiple individual run level
                ,
                chains = 4,
                cores = 4,

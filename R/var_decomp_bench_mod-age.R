@@ -49,7 +49,7 @@ df = fread(here("data/hal_parsed_response_matrix7.csv")) |>
            TRUE ~ model_name
          ),
          model_name = str_c(model_name,reasoning_effort),
-         model = str_c(model_name,agent_name)) # |> 
+         model = str_c(model_name,agent_name)) # NOTE: for this analysis, we are treating model and agent as a single facet to demonstrate stability of rankings.
 
 benches =unique( df$benchmark)
 item_counts = df |> select(benchmark,task_id) |> distinct() |> group_by(benchmark) |> summarize(n = n_distinct(task_id))
@@ -69,7 +69,6 @@ make_draws_stats = function(drawstat,roperange = c(0,0.005)){
                 select(-Parameter)
               ,
               bayestestR::p_map(drawstat,
-                                # null = 0.000001,
                                 method="KernSmooth"
               ) |> 
                 select(-Parameter),
@@ -80,7 +79,6 @@ make_draws_stats = function(drawstat,roperange = c(0,0.005)){
                 range=roperange
               ) |> 
                 select(-Parameter)
-              
     )
   res
 }
@@ -99,7 +97,7 @@ for(b in benches){
     lmer(score ~ 1
          + (1|task_id)
          + (1|model)
-         # + (1|task_id:model)
+         # + (1|task_id:model) # not enough variation / multiple individual run level
          # + (1|model:agent_name)
          # + (1|task_id:model:agent_name)
          ,
@@ -131,10 +129,6 @@ for(b in benches){
   lmsums2[[b]]
   toc()
 }
-
-
-
-
 
 
 
@@ -225,7 +219,9 @@ for(b in benches){
   blmdraws2[[b]] = as_draws_rvars(blmmods2[[b]])
   
   # make pct summary
-  blmsums2[[b]] = lapply(blmdraws2[[b]][str_starts(names(blmdraws2[[b]]),"sd|sig")], function(X) make_draws_stats(X^2/reduce(blmdraws2[[b]][str_starts(names(blmdraws2[[b]]),"sd|sig")],\(acc,nxt) acc + (nxt^2)))) |> list_rbind(names_to = "var")
+  blmsums2[[b]] = lapply(blmdraws2[[b]][str_starts(names(blmdraws2[[b]]),"sd|sig")], 
+                         function(X) make_draws_stats(X^2/reduce(blmdraws2[[b]][str_starts(names(blmdraws2[[b]]),"sd|sig")],
+                                                                 \(acc,nxt) acc + (nxt^2)))) |> list_rbind(names_to = "var")
   blmsums2[[b]]
 }
 
@@ -234,9 +230,6 @@ nitems = 100
 
 get_bmod2_ep2 = function(drawlist,nitems=100){
   m_ep2 = drawlist[["sd_model__Intercept"]]^2/(drawlist[["sd_model__Intercept"]]^2+ 
-                                                      # drawlist[["sd_task_id:model_name__Intercept"]]^2/nitems+
-                                                      # drawlist[["sd_model_name:agent_name__Intercept"]]^2+
-                                                      # drawlist[["sd_task_id:model_name:agent_name__Intercept"]]^2/nitems + 
                                                       drawlist[["sigma"]]^2/nitems)  
   make_draws_stats(m_ep2)
 }
@@ -294,58 +287,6 @@ for(b in benches){
 }
 
 gblms2 = list_rbind(gblmsums2,names_to = "benchmark")
-
-# 
-# 
-# ### Bayes MV --------
-# 
-# 
-# tic()
-# bm2 = dft |> brm(mvbind(score,total_tokens,(total_tokens)^2) ~ 1
-#                  + (1|benchmark)
-#                  + (1|benchmark:task_id)
-#                  + (1|model_name)
-#                  + (1|agent_name)
-#                  + (1|benchmark:task_id:model_name)
-#                  + (1|benchmark:task_id:agent_name)
-#                  + (1|model_name:agent_name)
-#                  + (1|benchmark:task_id:model_name:agent_name)
-#                  + (1|benchmark:model_name)
-#                  + (1|benchmark:agent_name)
-#                  + (1|benchmark:model_name:agent_name)
-#                  ,
-#                  chains = 4,
-#                  cores = 4,
-#                  thin = 5,
-#                  iter = 2000,
-#                  backend = "cmdstanr",
-#                  control = list(adapt_delta = 0.95),
-#                  data = _,
-#                  threads = threading(2),
-#                  save_pars = save_pars("all"),
-#                  stan_model_args = list(stanc_options = list("O1")),
-#                  file = here::here("data","brmfit_tok.rds"),
-#                  file_refit = "always"
-#                  
-#                  
-# )
-# 
-# bm2 |> summary()
-# 
-# toc()
-# 
-# # get draws
-# bmd2 = as_draws_rvars(bm2)
-# 
-# # make pct summary
-# bms2 = lapply(bmd2[str_starts(names(bmd2),"sd|sig")], function(X) make_draws_stats(X^2/reduce(bmd2[str_starts(names(bmd2),"sd|sig")],\(acc,nxt) acc + (nxt^2)))) |> list_rbind(names_to = "var")
-# bms2
-# 
-# 
-# 
-# 
-
-
 
 
 
