@@ -59,3 +59,4 @@ figures/*.pdf
 # Quarto
 docs/*_cache/
 docs/*_files/
+.DS_Store
