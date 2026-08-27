@@ -1,6 +1,23 @@
-# History files
+# R session artifacts
 .Rhistory
 .Rapp.history
+.RData
+.RDataTmp
+.Ruserdata
+.Renviron
+.Rproj.user/
+*.Rproj
+
+# OS / editor
+.DS_Store
+*~
+
+# Stan / cmdstanr build artifacts
+*.o
+*.so
+*.hpp
+*.exe
+
 
 # Session Data files
 .RData
@@ -60,3 +77,18 @@ figures/*.pdf
 docs/*_cache/
 docs/*_files/
 .DS_Store
+
+
+# Stan / cmdstanr build artifacts
+*.o
+*.so
+*.hpp
+*.exe
+
+# Generated outputs. Everything under outputs/ is reproducible from scripts/.
+# Cached model fits are large (100 MB+ for the pooled fit) and are not tracked.
+outputs/fits/*
+outputs/figures/*
+outputs/tables/*
+outputs/results/*
+!outputs/**/.gitkeep
