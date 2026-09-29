@@ -1,18 +1,23 @@
-# How Reliable Are Agent Leaderboards? A Variance-Decomposition Analysis
+# Agent Evaluation Reliability: More Tasks Won't (Always) Fix an Agent Leaderboard
 
 Code and data for the ICLR submission. The paper applies generalizability
-theory to nine benchmarks on the Holistic Agent Leaderboard (HAL),
-decomposing agent score variance across model, task, and scaffold, and asks how
-much of a published ranking would survive a redraw of the evaluation
-conditions.
+theory to 22 agent benchmarks — nine from the Holistic Agent Leaderboard (HAL)
+and 13 from the Harbor Index — decomposing score variance across model, task,
+and scaffold, and asking **which conclusions an evaluation actually supports,
+and what additional evaluation would improve them.**
 
-Three results, and where to find each in the code:
+The organising idea: reliability is not a property of a benchmark. It is a
+property of a benchmark *and* a claim. The same data can rank deployable
+systems precisely while leaving the underlying models unresolved.
+
+Four results, and where to find each in the code:
 
 | Result | Script |
 |---|---|
-| Scaffold is a non-negligible measurement facet: for a fixed task, scaffold variation rivals or exceeds model variation | [`scripts/03_leaderboard_reliability.R`](scripts/03_leaderboard_reliability.R) |
-| Benchmarks do not carry equal signal: only two of nine reach Eρ² > 0.75 for model ranking even with unlimited same-construction tasks | [`scripts/02_benchmark_reliability.R`](scripts/02_benchmark_reliability.R) |
-| Reliability is design-conditional: task-only scaling asymptotes near Eρ² ≈ 0.44, broadening across benchmarks raises it to ≈ 0.75 | [`scripts/03_leaderboard_reliability.R`](scripts/03_leaderboard_reliability.R) |
+| **Reliability depends on the measurement goal.** Fixed model–scaffold systems rank reliably (Eρ² ≈ 0.94–0.99); the underlying models do not (Eρ² ≈ 0.15–0.84) | [`02_benchmark_reliability.R`](scripts/02_benchmark_reliability.R) |
+| **Changing the scaffold can change conclusions.** Inter-scaffold reliability spans 0.21–0.83; the scaffold changes *which tasks* get solved more than the model does | [`02`](scripts/02_benchmark_reliability.R), [`03`](scripts/03_leaderboard_reliability.R) |
+| **More tasks cannot resolve all uncertainty.** Under observed scaffold coverage, unlimited tasks add at most ≈ 0.10 to model-ranking reliability | [`02`](scripts/02_benchmark_reliability.R), [`03`](scripts/03_leaderboard_reliability.R) |
+| **Pooling diverse benchmarks helps, at lower cost.** Breadth lifts projected reliability from ≈ 0.44 to ≈ 0.75 at a fixed task budget; the latent model effect also transports better to held-out benchmarks | [`07`](scripts/07_harbor_corroboration.R), [`08`](scripts/08_external_validation.R), [`09`](scripts/09_cost_and_allocation.R) |
 
 ---
 
@@ -22,6 +27,7 @@ Three results, and where to find each in the code:
 Rscript install.R              # packages (CmdStan only needed to re-fit)
 Rscript tests/test_gtheory.R   # check the reliability engine against the paper
 Rscript tests/test_ranks.R     # check the ranking and rank-agreement machinery
+Rscript tests/test_design.R    # check the datasets, cost model, and subsampling
 Rscript scripts/00_design_summary.R
 ```
 
@@ -39,7 +45,7 @@ make analysis                                # then the figures, in minutes
 
 ---
 
-## The idea, in one page
+## The idea
 
 A leaderboard reports one number per system, and readers treat the induced
 ordering as a fact about models. Whether it is depends on how much of the
@@ -54,6 +60,15 @@ sparse and unbalanced, the split is estimated with Bayesian Bernoulli-logit
 mixed models — random-item, many-facet Rasch models, where model capability,
 task difficulty, and scaffold effects live on one latent log-odds scale.
 
+Three things follow from choosing an object, and the code makes each of them
+one argument rather than one function:
+
+| Object | What counts as signal | What counts as error |
+|---|---|---|
+| `"model"` | persistent model differences | scaffold, task, benchmark, and their interactions with the model |
+| `"scaffold"` | persistent scaffold differences | model, task, benchmark, and their interactions |
+| `"system"` | the model–scaffold pair together, including their compatibility | task and benchmark variation only |
+
 Two fits (`R/formulas.R`):
 
 - **Benchmark level** (paper Eq. 2) — fitted within each benchmark:
@@ -67,6 +82,19 @@ object is the **model**, scaffold effects are error, and no number of tasks
 removes them. When the object is the **model–scaffold system**, the same
 variation is signal. This is the paper's central inferential point, and it is
 also the design principle of the code.
+
+Two further datasets carry the argument beyond HAL:
+
+- **Harbor Index** (`R/harbor.R`) — a second meta-benchmark with a different
+  sparsity pattern: far fewer tasks, but the same models and scaffolds on every
+  benchmark, where HAL's coverage varies benchmark to benchmark. It uses the
+  *same* decomposition, so agreement is a genuine check rather than a
+  restatement. (Harbor is not fully crossed on model × scaffold — 18 of 36
+  pairs — so it corroborates the benchmark-breadth result, not
+  scaffold-specific ones.)
+- **External validation** (`R/external.R`) — four contemporaneous benchmarks
+  outside the panel, used to test whether the estimated latent model effect
+  transports, with explicit contamination control where content overlaps.
 
 ---
 
@@ -83,20 +111,27 @@ R/
   variance.R             fits -> variance components (Bayesian or frequentist)
   gtheory.R              G-coefficients, signal-to-noise, D-studies
   ranks.R                latent capability, posterior ranks, rank agreement
+  cost.R                 design cost, allocation, repeated task subsampling
+  harbor.R               the Harbor Index corroboration dataset
+  external.R             out-of-panel validation of the latent model effect
   disco.R                nonparametric distance-components decomposition
   plots.R                shared theme and one builder per figure
 scripts/
-  00_design_summary.R           Table 1, coverage, connectivity  (seconds)
-  01_fit_models.R               estimates both decompositions    (hours)
-  02_benchmark_reliability.R    Figures 1-3, ceilings table
-  03_leaderboard_reliability.R  Figures 4-5, model vs. scaffold
-  04_rank_analysis.R            Figures 6-7, Table 2, indistinguishability
+  00_design_summary.R           design summary, coverage, connectivity (seconds)
+  01_fit_models.R               estimates every decomposition        (hours)
+  02_benchmark_reliability.R    per-benchmark reliability by object
+  03_leaderboard_reliability.R  pooled D-study, variance decomposition
+  04_rank_analysis.R            rank shifts, agreement, indistinguishability
   05_ablations.R                leave-one-out sensitivity analyses
   06_method_comparison.R        LME / GLME / Bayes / DISCO contrast
+  07_harbor_corroboration.R     the same design question on a second dataset
+  08_external_validation.R      does the latent model effect transport?
+  09_cost_and_allocation.R      cost frontier and task subsampling
 tests/
-  test_gtheory.R         checks the engine reproduces Eq. 3-8 longhand
+  test_gtheory.R         checks the engine reproduces the published equations
   test_ranks.R           checks rank direction, ties, and rank agreement
-data/                    the response matrix, documented in data/README.md
+  test_design.R          checks the datasets, cost model, and subsampling
+data/                    three datasets, documented in data/README.md
 outputs/                 figures, tables, results, cached fits (all gitignored)
 ```
 
@@ -129,11 +164,25 @@ is then one line:
 ```r
 vc <- vcomp_from_brms(fit, level = "leaderboard")
 
-ep2(vc, design(n_tasks = 50, n_benchmarks = 9))   # Eq. 7  model ranking
-ep2(vc_b, design(n_tasks = 50), object = "system")# Eq. 4  model-scaffold system
-inter_scaffold_reliability(vc_b, n_tasks = 50)    # Eq. 5  rho_AA'
-reliability_ceiling(vc, n_benchmarks = 9)         # Eq. 8  task-only limit
-snr(vc, design(50, 9))                            # Eq. 1  S/N_delta
+ep2(vc, design(n_tasks = 50, n_benchmarks = 9))     # model ranking, pooled
+ep2(vc_b, design(n_tasks = 50), object = "system")  # model-scaffold systems
+ep2(vc_b, design(n_tasks = 50), object = "scaffold")# ranking scaffolds
+inter_scaffold_reliability(vc_b, n_tasks = 50)      # rho_AA'
+reliability_ceiling(vc, n_benchmarks = 9)           # the task-only limit
+snr(vc, design(50, 9))                              # signal-to-noise
+phi(vc_gaussian, design(50, 9))                     # absolute, not relative
+```
+
+Which facets count as error is derived from the object, not hardcoded: ranking
+models makes the scaffold an error facet, ranking scaffolds makes the model
+one. The two are exact mirrors, and a test asserts it.
+
+Design economics sit on top of the same components:
+
+```r
+frontier <- cost_reliability_frontier(vc)            # reliability vs dollars
+cheapest_design_reaching(frontier, 0.75)             # cheapest way to a target
+subsample_rankings(df, k_values = c(5, 15, 30))      # model-free cross-check
 ```
 
 Inter-scaffold reliability is not a special case in the implementation: it is
@@ -163,8 +212,13 @@ reuse it rather than duplicating the algebra.
 | Figures 6–7, Table 2 (rank shifts and agreement) | `Rscript scripts/04_rank_analysis.R` |
 | Appendix D.5–D.6 ablations | `Rscript scripts/05_ablations.R` |
 | Appendix D.4 leave-one-benchmark-out | `RUN_LOBO_BAYES=TRUE REFIT=TRUE Rscript scripts/05_ablations.R` |
-| Appendix G.3 estimator comparison | `Rscript scripts/06_method_comparison.R` |
-| Appendix C.5 DISCO | `RUN_DISCO=TRUE Rscript scripts/06_method_comparison.R` |
+| Estimator comparison (LME/GLME/Bayes) | `Rscript scripts/06_method_comparison.R` |
+| DISCO nonparametric decomposition | `RUN_DISCO=TRUE Rscript scripts/06_method_comparison.R` |
+| Harbor Index corroboration, HAL vs Harbor D-study | `Rscript scripts/07_harbor_corroboration.R` |
+| Harbor task-threshold sensitivity | `RUN_HARBOR_THRESHOLDS=TRUE REFIT=TRUE Rscript scripts/07_harbor_corroboration.R` |
+| Absolute reliability Φ, observed scale | `RUN_ABSOLUTE=TRUE REFIT=TRUE Rscript scripts/02_benchmark_reliability.R` |
+| External validation, Kendall's τ table and Δτ | `Rscript scripts/08_external_validation.R` |
+| Cost frontier, allocation, task subsampling | `Rscript scripts/09_cost_and_allocation.R` |
 
 Figures go to `outputs/figures/`; tables are written as both CSV and a
 booktabs LaTeX fragment to `outputs/tables/`.
@@ -175,7 +229,9 @@ Wall-clock on an Apple M1 Max, matching Appendix C.6:
 
 | Step | Time |
 |---|---|
-| Design summary; scripts 02–04 from cached fits | minutes |
+| Design summary; scripts 02–04, 07–08 from cached fits | minutes |
+| Harbor Index fit (1,098 rollouts) | minutes |
+| Cost frontier and task subsampling (script 09) | ~5 min |
 | Estimator comparison (script 06): 20 lme4 refits | ~30–60 min |
 | Pooled leaderboard fit (6 chains × 9,000 iter) | ~5.5 h |
 | Nine benchmark-level fits | ~6.5 min each |
@@ -196,6 +252,9 @@ live in `SAMPLER` in [`config.R`](config.R).
 | `RUN_LOO=TRUE` | PSIS-LOO diagnostics (Appendix D.2) |
 | `RUN_LOBO_BAYES=TRUE` | Bayesian leave-one-benchmark-out refits |
 | `RUN_DISCO=TRUE` | Nonparametric decomposition |
+| `RUN_HARBOR_THRESHOLDS=TRUE` | Refit Harbor at task thresholds of 3, 4, 5 |
+| `RUN_ABSOLUTE=TRUE` | Absolute reliability (Φ) from Gaussian per-benchmark fits |
+| `N_SUBSAMPLES=n` | Replicates per k in the task-subsampling check (default 500) |
 | `N_CORES=n` | Parallel workers for the frequentist ablations |
 
 ---
@@ -222,6 +281,27 @@ can be checked.
 `median_normalized`. Quote `median` for a single component; `median_normalized`
 exists only so stacked bars sum to one, because the median of a sum is not the
 sum of medians.
+
+**Dollar figures are assumptions, not measurements.** The response matrices
+record outcomes, not spend, so the per-rollout price in `COST` (config.R) is an
+input. The default is a single flat rate back-calculated so the full observed
+battery reproduces its reported total, which makes every projection a
+transparent linear function of one number. Real cost varies substantially by
+benchmark, model, and episode length, so **the ordering of designs on the cost
+frontier is far more trustworthy than the levels.** If you have per-benchmark
+prices, set `COST$per_trial_by_benchmark` and every cost figure updates
+consistently. Rank-agreement columns in the subsampling table do not depend on
+the price and reproduce regardless.
+
+**External validation is convergent evidence, not ground truth.** The external
+scores are scraped third-party leaderboard results obtained under their own
+harnesses, not reruns under controlled conditions. Agreement shows the latent
+estimate carries information that transports; it does not establish that
+either ranking is correct, nor that a single latent dimension captures agentic
+capability. With six to twenty overlapping models per benchmark, single models
+can move a rank correlation noticeably, which is why
+`scripts/08_external_validation.R` reports leave-one-model-out ranges and flags
+sign reversals alongside the headline numbers.
 
 **Wide intervals are a finding.** Most benchmarks contain two or three
 scaffolds, so they carry little direct information about the distribution of

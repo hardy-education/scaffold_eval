@@ -114,6 +114,156 @@ save_table(ceiling_tbl, "table_task_only_ceilings",
                            "ranking, by benchmark."))
 
 
+# ---- Every coefficient, per benchmark --------------------------------------
+#
+# The same posterior read seven ways. Each column answers a different question,
+# and the spread across them is the paper's first finding: a benchmark can be
+# excellent for one claim and near-useless for another.
+#
+#   Erho^2_M(i), Erho^2_A(i)  how task-dependent is each facet (descriptive;
+#                             see `task_reliability()` on what it omits)
+#   rho_AA'                   would two scaffolds rank the models alike
+#   Erho^2_M(b)               ranking models, scaffold treated as error
+#   Erho^2_A(b)               ranking scaffolds, model treated as error
+#   Erho^2_MA(b)              ranking deployable model-scaffold systems
+#   Erho^2_M(b)(inf)          the task-only ceiling for model ranking
+
+coefficient_table <- purrr::imap(vcs, function(vc, b) {
+  ni <- n_tasks$n_tasks[n_tasks$benchmark == b]
+  med <- function(x) summarize_quantity(x)$median
+
+  tibble(
+    benchmark      = b,
+    n_tasks        = ni,
+    ep2_M_task     = med(task_reliability(vc, "model")),
+    ep2_A_task     = med(task_reliability(vc, "scaffold")),
+    rho_AA         = med(inter_scaffold_reliability(vc, n_tasks = ni)),
+    ep2_M_bench    = med(ep2(vc, design(n_tasks = ni), object = "model")),
+    ep2_A_bench    = med(ep2(vc, design(n_tasks = ni), object = "scaffold")),
+    ep2_MA_bench   = med(ep2(vc, design(n_tasks = ni), object = "system")),
+    ep2_M_ceiling  = med(reliability_ceiling(vc, object = "model"))
+  )
+}) |>
+  bind_rows() |>
+  mutate(benchmark = factor(benchmark, levels = BENCHMARKS)) |>
+  arrange(benchmark)
+
+print(coefficient_table, n = Inf)
+save_table(coefficient_table, "table_benchmark_coefficients",
+           caption = paste("Reliability and generalizability coefficients per",
+                           "benchmark, by object of measurement."))
+
+message(sprintf(
+  "\nRanking deployable systems is reliable everywhere (Erho^2_MA in [%.3f, %.3f]);\nranking the underlying model is not (Erho^2_M in [%.3f, %.3f]).",
+  min(coefficient_table$ep2_MA_bench), max(coefficient_table$ep2_MA_bench),
+  min(coefficient_table$ep2_M_bench), max(coefficient_table$ep2_M_bench)
+))
+message(sprintf(
+  "Inter-scaffold reliability ranges from %.3f (%s) to %.3f (%s).",
+  min(coefficient_table$rho_AA),
+  coefficient_table$benchmark[which.min(coefficient_table$rho_AA)],
+  max(coefficient_table$rho_AA),
+  coefficient_table$benchmark[which.max(coefficient_table$rho_AA)]
+))
+
+
+# ---- Model against scaffold, within each benchmark -------------------------
+#
+# The pooled fit answers this with more power, but the per-benchmark fits show
+# whether the pattern is general or driven by one or two instruments. Two
+# contrasts, because they point different ways: models and scaffolds differ
+# comparably on average, while the scaffold has the larger effect on *which
+# tasks* get solved.
+
+bench_contrasts <- purrr::imap(vcs, function(vc, b) {
+  model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "both") |>
+    mutate(benchmark = b, .before = 1)
+}) |>
+  bind_rows() |>
+  mutate(benchmark = factor(benchmark, levels = BENCHMARKS))
+
+print(bench_contrasts |>
+        select(benchmark, label, median, low, high, p_scaffold_exceeds_model),
+      n = Inf)
+
+save_table(bench_contrasts |>
+             select(benchmark, scope, label, median, low, high,
+                    p_model_exceeds_scaffold, p_scaffold_exceeds_model),
+           "table_benchmark_model_vs_scaffold",
+           caption = paste("Per-benchmark contrasts between model-related and",
+                           "scaffold-related variance: main effects and",
+                           "task-indexed interactions."))
+
+save_figure(plot_benchmark_contrasts(bench_contrasts),
+            "fig2_benchmark_model_vs_scaffold", width = 10, height = 4.5)
+
+for (s_ in unique(bench_contrasts$scope)) {
+  d <- filter(bench_contrasts, scope == s_)
+  message(sprintf(
+    "%-18s scaffold exceeds model on %d of %d benchmarks (P > 0.5).",
+    dplyr::first(d$label), sum(d$p_scaffold_exceeds_model > 0.5), nrow(d)
+  ))
+}
+
+
+# ---- Absolute reliability, on the observed scale ---------------------------
+#
+# Everything above concerns *rankings*. A threshold claim -- "this system
+# clears 60%" -- is a claim about a level, and levels are reproducible only if
+# the components that shift every model together are also small. That is the
+# dependability coefficient Phi, and it is always at most Erho^2.
+#
+# Phi is quoted on the observed proportion scale rather than the latent
+# log-odds scale, because that is the scale a threshold is stated on. That
+# needs the Gaussian per-benchmark fits, which are opt-in:
+#
+#   RUN_ABSOLUTE=TRUE REFIT=TRUE Rscript scripts/02_benchmark_reliability.R
+
+RUN_ABSOLUTE <- env_flag("RUN_ABSOLUTE")
+
+if (RUN_ABSOLUTE) {
+  message("\n=== Absolute reliability (Gaussian fits, observed scale) ===")
+
+  gaussian_vcs <- purrr::map(purrr::set_names(bench_levels), function(b) {
+    f <- fit_bayes(filter(df, benchmark == b), FORMULA_BENCHMARK,
+                   paste0("benchmark_gaussian_", b),
+                   family = gaussian(), sampler = SAMPLER$benchmark)
+    vcomp_from_brms(f, level = "benchmark")
+  })
+
+  absolute <- purrr::imap(gaussian_vcs, function(vc, b) {
+    ni <- n_tasks$n_tasks[n_tasks$benchmark == b]
+    na <- n_scaf$n_scaffolds[n_scaf$benchmark == b]
+    bind_cols(
+      tibble(benchmark = b, n_tasks = ni, n_scaffolds = na),
+      tibble(
+        phi_M     = summarize_quantity(phi(vc, design(ni, 1, na)))$median,
+        ep2_M     = summarize_quantity(ep2(vc, design(ni, 1, na)))$median,
+        phi_M_one_task = summarize_quantity(phi(vc, design(1, 1, na)))$median
+      )
+    )
+  }) |>
+    bind_rows() |>
+    mutate(benchmark = factor(benchmark, levels = BENCHMARKS)) |>
+    arrange(benchmark)
+
+  print(absolute, n = Inf)
+  save_table(absolute, "table_absolute_reliability",
+             caption = paste("Absolute (dependability) and relative reliability",
+                             "for model scores, estimated on the observed scale."))
+
+  message(sprintf(
+    "Absolute reliability is at or below relative reliability on every benchmark (max Phi = %.3f, max Erho^2 = %.3f).",
+    max(absolute$phi_M), max(absolute$ep2_M)
+  ))
+  message("A stable ranking does not imply reproducible score levels: ",
+          "these data support ordering claims far better than threshold claims.")
+} else {
+  message("\nSkipping absolute reliability ",
+          "(set RUN_ABSOLUTE=TRUE REFIT=TRUE; needs Gaussian per-benchmark fits).")
+}
+
+
 # ---- Figure 3: signal-to-noise ---------------------------------------------
 
 save_figure(

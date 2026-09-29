@@ -32,6 +32,8 @@ env_flag <- function(name, default = FALSE) {
 
 PATHS <- list(
   data     = here::here("data", "hal_response_matrix.csv"),
+  harbor   = here::here("data", "harbor_index_data.csv"),
+  external = here::here("data", "hal_external_validation.csv"),
   fits     = here::here("outputs", "fits"),
   figures  = here::here("outputs", "figures"),
   tables   = here::here("outputs", "tables"),
@@ -53,6 +55,9 @@ SAMPLER <- list(
   benchmark   = list(chains = 4, cores = 4, iter = 2000, warmup = 1000, thin = 3),
   # Leave-one-benchmark-out refits: 4 chains x 4,000 iter -> 1,600 draws.
   loo         = list(chains = 4, cores = 4, iter = 4000, warmup = 2000, thin = 5),
+  # Harbor Index corroboration fit. Far fewer rollouts than HAL, so this is
+  # minutes rather than hours.
+  harbor      = list(chains = 4, cores = 4, iter = 4000, warmup = 2000, thin = 2),
   adapt_delta = 0.95,
   threads     = 2,
   backend     = "cmdstanr",
@@ -87,6 +92,36 @@ LOD_BAND <- c(low = 2, mid = 2.5, high = 3)
 
 # Reliability reference used when describing benchmarks as high- or low-signal.
 RELIABILITY_TARGET <- 0.75
+
+# ---- Evaluation cost ------------------------------------------------------
+#
+# Cost assumptions for the design/allocation analysis in R/cost.R. These are
+# *inputs*, not measurements: the response matrices record outcomes, not
+# spend, so the price has to be supplied.
+#
+# `per_trial` is a single average dollar cost per rollout, back-calculated so
+# that the full observed HAL battery (29,923 rollouts) totals the ~$47,000
+# figure reported for it. That makes the baseline reproduce, and makes every
+# projection a transparent linear function of it.
+#
+# Caveat worth reading before quoting a dollar figure: real per-rollout cost
+# varies substantially by benchmark, model, and episode length, and a uniform
+# price cannot capture that. If you have per-benchmark prices, put them in
+# `per_trial_by_benchmark` (a named vector over benchmark codes) and the cost
+# functions will use them in preference to the flat rate. Projections made
+# with the flat rate will not match dollar figures computed from a
+# benchmark-specific price table.
+COST <- list(
+  # Dollars per rollout, averaged over the observed battery.
+  per_trial = 47000 / 29923,
+  # Optional named vector of benchmark-specific prices; NULL uses `per_trial`.
+  per_trial_by_benchmark = NULL,
+  # Models a projected design would rank. Cost scales with this; reliability
+  # does not, so it is a pure multiplier on the budget.
+  n_models = 54,
+  # Reported total for the full battery, used as the savings baseline.
+  observed_total = 47000
+)
 
 # ---- Presentation ---------------------------------------------------------
 

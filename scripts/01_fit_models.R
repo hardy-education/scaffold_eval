@@ -15,6 +15,7 @@
 #
 #   pooled leaderboard fit          ~5.5 h
 #   nine benchmark-level fits       ~1 h total
+#   Harbor Index corroboration fit  minutes (1,098 rollouts)
 #   convergence + LOO diagnostics   minutes (LOO with moment matching: ~38 h)
 
 source(here::here("R", "setup.R"))
@@ -56,6 +57,24 @@ conv_bench <- purrr::imap(benchmark_fits, \(f, b) {
 
 print(conv_bench, n = Inf)
 save_table(conv_bench, "convergence_benchmark", digits = 3)
+
+
+# ---- Harbor Index corroboration fit ----------------------------------------
+#
+# A second dataset with the same facet structure but the opposite sparsity
+# pattern: few tasks, fully crossed models and scaffolds. Fitted here so that
+# scripts/07 can read it like any other cached fit.
+
+message("=== Harbor Index fit (Eq. 6 applied to the corroboration data) ===")
+harbor <- load_harbor_data()
+harbor_fit <- fit_harbor(harbor)
+print(summary(harbor_fit))
+
+conv_harbor <- convergence_summary(harbor_fit)
+save_table(conv_harbor, "convergence_harbor", digits = 3)
+if (max(conv_harbor$rhat, na.rm = TRUE) > 1.01) {
+  warning("Harbor fit has Rhat above 1.01; inspect the chains.")
+}
 
 
 # ---- Sensitivity fits ------------------------------------------------------

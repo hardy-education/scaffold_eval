@@ -366,3 +366,149 @@ plot_ablation_stability <- function(dat) {
     labs(x = NULL, y = "Proportion of variance across refits") +
     paper_theme(legend = "none")
 }
+
+
+#' Per-benchmark model-versus-scaffold variance contrasts (Figure 2, right).
+#'
+#' Above zero, the model facet carries more of that kind of variance; below
+#' zero, the scaffold does. Splitting main effects from task interactions is
+#' the point: they need not agree, and here they do not.
+plot_benchmark_contrasts <- function(dat) {
+  ggplot(dat, aes(x = benchmark, y = median, colour = label)) +
+    geom_hline(yintercept = 0, linetype = "dashed", colour = "grey55") +
+    geom_pointrange(aes(ymin = low, ymax = high),
+                    position = position_dodge(width = 0.55), size = 0.35) +
+    scale_x_discrete(labels = BENCHMARK_SHORT) +
+    scale_colour_manual(values = unname(OBJECT_COLOURS[c("model", "system")]),
+                        name = NULL) +
+    labs(x = NULL, y = "Var(model) - Var(scaffold), share of total") +
+    paper_theme(legend = "bottom") +
+    theme(axis.text.x = element_text(angle = 35, hjust = 1))
+}
+
+
+# ---- Harbor corroboration --------------------------------------------------
+
+#' Pooled D-study, HAL against the Harbor Index (paper Figure 3).
+#'
+#' The two datasets are fitted separately and projected separately. Placing
+#' them side by side asks whether the same design conclusion emerges from data
+#' with very different sparsity, which is a stronger check than pooling them
+#' would be.
+plot_dataset_dstudy <- function(dat, statistic = "ep2") {
+  d <- filter(dat, statistic == .env$statistic, total_tasks >= 5)
+
+  p <- ggplot(d, aes(x = total_tasks, y = median,
+                     colour = factor(n_benchmarks), group = n_benchmarks)) +
+    geom_line(linewidth = 0.8) +
+    facet_wrap(~dataset, scales = "free_x") +
+    scale_colour_viridis_d(option = "viridis", direction = -1,
+                           name = "Benchmarks\nsampled") +
+    labs(x = "Total Number of Agentic Tasks") +
+    paper_theme()
+
+  if (statistic == "ep2") {
+    p + labs(y = expression("Estimated Overall Rank Reliability: E" * hat(rho)^2))
+  } else {
+    p +
+      annotate("rect",
+               xmin = min(d$total_tasks), xmax = max(d$total_tasks),
+               ymin = LOD_BAND[["low"]], ymax = LOD_BAND[["high"]],
+               fill = "#F0E442", alpha = 0.3) +
+      labs(y = expression("Signal-to-Noise Ratio: S/N(" * delta * ")"))
+  }
+}
+
+
+# ---- External validation ---------------------------------------------------
+
+#' Difference in Kendall's tau, with paired bootstrap intervals.
+#'
+#' Positive means the latent model effect agrees with the external benchmark
+#' more closely than the mean-score aggregate does. The leave-one-model-out
+#' range is drawn as a lighter bar: where it straddles zero, a single model is
+#' carrying the comparison.
+plot_delta_tau <- function(delta) {
+  ggplot(delta, aes(x = stats::reorder(benchmark_label, delta), y = delta)) +
+    geom_hline(yintercept = 0, linetype = "dashed", colour = "grey50") +
+    geom_linerange(aes(ymin = loo_min_delta, ymax = loo_max_delta),
+                   linewidth = 3, colour = "grey85") +
+    geom_errorbar(aes(ymin = boot_low, ymax = boot_high), width = 0.14,
+                  linewidth = 0.5) +
+    geom_point(size = 2.8, colour = OBJECT_COLOURS[["model"]]) +
+    geom_text(aes(label = paste0("n = ", n_models)),
+              hjust = -0.25, vjust = -0.9, size = 3, colour = "grey35") +
+    coord_flip() +
+    labs(x = NULL,
+         y = expression(Delta * tau[b] * ":  " * hat(theta) * " minus mean score")) +
+    paper_theme(legend = "none")
+}
+
+
+#' External score against each in-panel estimator.
+#'
+#' The scatter behind the correlation table, so the reader can see how much of
+#' each tau rests on how few models.
+plot_external_scatter <- function(comparison) {
+  comparison |>
+    select(benchmark_label, model_name, external_score,
+           `Mean score` = mean_score, `theta-hat` = theta) |>
+    tidyr::pivot_longer(c(`Mean score`, `theta-hat`),
+                        names_to = "estimator", values_to = "in_panel") |>
+    # The two estimators are on different scales (proportion vs log-odds), so
+    # compare ranks, which is what Kendall's tau uses anyway.
+    group_by(benchmark_label, estimator) |>
+    mutate(in_panel_rank = rank(in_panel), external_rank = rank(external_score)) |>
+    ungroup() |>
+    ggplot(aes(in_panel_rank, external_rank, colour = estimator)) +
+    geom_abline(slope = 1, intercept = 0, linetype = "dashed", colour = "grey75") +
+    geom_point(size = 2, alpha = 0.85) +
+    facet_wrap(~benchmark_label, scales = "free") +
+    scale_colour_manual(values = unname(OBJECT_COLOURS[c("model", "system")]),
+                        name = NULL) +
+    labs(x = "Rank within the HAL panel", y = "Rank on the external benchmark") +
+    paper_theme(legend = "bottom")
+}
+
+
+# ---- Cost and allocation ---------------------------------------------------
+
+#' Projected reliability against projected cost.
+#'
+#' Each line is a battery size; moving right along one buys tasks, moving
+#' between them buys breadth. Where a lower line sits left of a higher one at
+#' the same height, breadth is the cheaper way to that reliability.
+plot_cost_frontier <- function(frontier) {
+  ggplot(frontier, aes(x = cost, y = median,
+                       colour = factor(n_benchmarks), group = n_benchmarks)) +
+    geom_hline(yintercept = RELIABILITY_TARGET, linetype = "dashed",
+               colour = "grey55") +
+    geom_line(linewidth = 0.8) +
+    geom_point(size = 1) +
+    scale_x_log10(labels = scales::dollar) +
+    scale_colour_viridis_d(option = "viridis", direction = -1,
+                           name = "Benchmarks\nsampled") +
+    labs(x = "Projected cost (log scale)",
+         y = expression("Projected Rank Reliability: E" * hat(rho)^2)) +
+    paper_theme()
+}
+
+
+#' Distribution of rank agreement under repeated task subsampling.
+#'
+#' Shows the spread across replicates, not just the mean: at small k the
+#' agreement depends noticeably on which tasks happen to be drawn, which is
+#' itself part of the finding.
+plot_subsampling <- function(subsamples) {
+  subsamples |>
+    tidyr::pivot_longer(c(spearman, kendall),
+                        names_to = "metric", values_to = "value") |>
+    mutate(metric = recode(metric, spearman = "Spearman rho",
+                           kendall = "Kendall tau")) |>
+    ggplot(aes(factor(k), value)) +
+    geom_boxplot(outlier.size = 0.4, linewidth = 0.3, fill = "grey92") +
+    facet_wrap(~metric) +
+    labs(x = "Tasks retained per benchmark",
+         y = "Agreement with the complete-data ranking") +
+    paper_theme(legend = "none")
+}

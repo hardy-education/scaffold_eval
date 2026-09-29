@@ -37,10 +37,20 @@
 # by hand, so a change here that breaks a paper formula fails loudly.
 
 OBJECT_FACETS <- list(
-  model  = "M",        # a base LLM x reasoning-effort configuration
-  system = c("M", "A") # the deployable model-scaffold pair
+  model    = "M",        # a base LLM x reasoning-effort configuration
+  scaffold = "A",        # the harness, ranked with models as the error facet
+  system   = c("M", "A") # the deployable model-scaffold pair
 )
 
+# Every facet in the design. Which of these count as error depends entirely on
+# the object: ranking models makes the scaffold an error facet, ranking
+# scaffolds makes the model one. `gt_partition()` derives the split from
+# `OBJECT_FACETS` rather than assuming the model is always the object.
+ALL_FACETS <- c("B", "I", "M", "A")
+
+# The facets averaged over by default when no object is in play -- used by the
+# variance-share contrasts, which compare components rather than support a
+# ranking claim. Object-relative quantities use `ALL_FACETS` minus the object.
 SAMPLED_FACETS <- c("B", "I", "A")
 
 
@@ -51,10 +61,13 @@ SAMPLED_FACETS <- c("B", "I", "A")
 #' @param n_benchmarks Benchmarks in the battery (leaderboard level only).
 #' @param n_scaffolds Scaffolds each system is evaluated under. The observed
 #'   leaderboard reports one scaffold per reported score, so `1` is the design
-#'   current practice corresponds to.
-design <- function(n_tasks = 1, n_benchmarks = 1, n_scaffolds = 1) {
-  stopifnot(n_tasks > 0, n_benchmarks > 0, n_scaffolds > 0)
-  c(I = n_tasks, B = n_benchmarks, A = n_scaffolds)
+#'   current practice corresponds to. Ignored when the scaffold is the object.
+#' @param n_models Models averaged over. This only enters when the scaffold is
+#'   the object of measurement, where the model plays the role the scaffold
+#'   plays when ranking models.
+design <- function(n_tasks = 1, n_benchmarks = 1, n_scaffolds = 1, n_models = 1) {
+  stopifnot(n_tasks > 0, n_benchmarks > 0, n_scaffolds > 0, n_models > 0)
+  c(I = n_tasks, B = n_benchmarks, A = n_scaffolds, M = n_models)
 }
 
 
@@ -100,15 +113,16 @@ scaled_components <- function(vc, d, averaged = SAMPLED_FACETS) {
 #'   inter-scaffold reliability of Eq. 5.
 #' @return A list with `universe`, `relative_error`, `absolute_error`, and the
 #'   per-component `terms` used to build them.
-gt_partition <- function(vc, d, object = c("model", "system"), fixed = character()) {
+gt_partition <- function(vc, d, object = names(OBJECT_FACETS), fixed = character()) {
   object <- match.arg(object)
   obj_facets <- OBJECT_FACETS[[object]]
-  stopifnot(all(fixed %in% SAMPLED_FACETS))
+  stopifnot(all(fixed %in% ALL_FACETS))
 
   # A facet that is part of the object is not a source of error, and a facet
-  # declared fixed is averaged over rather than generalized to.
-  random <- setdiff(SAMPLED_FACETS, c(obj_facets, fixed))
-  averaged <- setdiff(SAMPLED_FACETS, obj_facets) # random + fixed
+  # declared fixed is averaged over rather than generalized to. Everything
+  # else is error -- including the model facet when scaffolds are the object.
+  random <- setdiff(ALL_FACETS, c(obj_facets, fixed))
+  averaged <- setdiff(ALL_FACETS, obj_facets) # random + fixed
 
   divisors <- component_divisors(vc, d, averaged)
 
@@ -164,7 +178,23 @@ snr <- function(vc, d, object = "model", fixed = character()) {
 #'
 #' Includes error terms that shift all objects together -- a uniformly hard
 #' task set, a systematically permissive scaffold. Those cancel from rankings
-#' but not from "does this system exceed 60% accuracy" claims.
+#' but not from "does this system exceed 60% accuracy" claims, so Phi is the
+#' coefficient to quote when a score is read as a level rather than a position.
+#' It is always at most the corresponding Erho^2.
+#'
+#' At the benchmark level this expands to
+#'
+#'   Phi_M(b) = sM / (sM + (sI + sIM)/ni + (sA + sMA)/na + (sIA + se)/(ni na))
+#'
+#' **Scale matters here more than it does for Erho^2.** A threshold claim is
+#' about an observed proportion, so absolute reliability is most interpretable
+#' on the observed scale, from the Gaussian fit -- not on the latent log-odds
+#' scale the rest of this repository works on. Computing `phi()` from a
+#' Bernoulli-logit `vcomp` is well defined and internally consistent, but it
+#' answers "are latent log-odds reproducible", which is not the question a
+#' deployment threshold asks. Fit the Gaussian variant
+#' (`FIT_SENSITIVITY=TRUE` in scripts/01) and pass that `vcomp` when the
+#' absolute claim is the point.
 phi <- function(vc, d, object = "model", fixed = character()) {
   p <- gt_partition(vc, d, object, fixed)
   p$universe / (p$universe + p$absolute_error)
@@ -193,6 +223,34 @@ inter_scaffold_reliability <- function(vc, n_tasks = 1, n_scaffolds = 1, n_bench
 #' bound. Benchmark- and scaffold-indexed error terms do not shrink with tasks,
 #' so this ceiling is strictly below 1 whenever sigma^2_BM or sigma^2_MA > 0
 #' (Corollary 3.2).
+#' Task reliability for one object, Erho^2_o(i).
+#'
+#' A deliberately narrow, descriptive quantity reported per benchmark in the
+#' paper's appendix table of coefficients:
+#'
+#'   Erho^2_M(i) = sigma^2_M / (sigma^2_M + sigma^2_IM)
+#'   Erho^2_A(i) = sigma^2_A / (sigma^2_A + sigma^2_IA)
+#'
+#' It asks how much of the object's variation persists across single tasks,
+#' holding everything else aside. Unlike `ep2()` it is **not** a full
+#' G-coefficient: it omits the residual and every error term not indexed by
+#' tasks, and it does not average over a design. Read it as "how
+#' task-dependent is this facet", and use `ep2()` for anything that has to
+#' support a ranking claim.
+#'
+#' @param vc A `vcomp`.
+#' @param object "model" or "scaffold".
+#' @param n_tasks Tasks averaged over; 1 reproduces the published table.
+task_reliability <- function(vc, object = c("model", "scaffold"), n_tasks = 1) {
+  object <- match.arg(object)
+  keys <- if (object == "model") c("M", "IM") else c("A", "IA")
+
+  term <- function(k) if (is.null(vc$values[[k]])) 0 else vc$values[[k]]
+  num <- term(keys[1])
+  num / (num + term(keys[2]) / n_tasks)
+}
+
+
 reliability_ceiling <- function(vc, n_benchmarks = 1, n_scaffolds = 1, object = "model") {
   ep2(vc, design(Inf, n_benchmarks, n_scaffolds), object = object)
 }
@@ -269,52 +327,80 @@ dstudy_by_benchmark <- function(vcs, n_tasks, ...) {
 }
 
 
-# ---- Model vs. scaffold variance -------------------------------------------
+# ---- Contrasts between variance components ---------------------------------
 
-#' Posterior contrast between model-related and scaffold-related variation.
+#' Posterior contrast between two sets of variance components.
 #'
-#' Section 5.1 asks whether the scaffold contributes as much rank-relevant
-#' variation as the model does. The contrast is taken as a share of total
-#' design-scaled variance, so it is on a common footing across designs, and its
-#' `p_scaffold_exceeds_model` is the probability quoted in the text.
+#' Asks whether one group of components carries more variance than another,
+#' and with what posterior probability. Both sides are design-scaled first, so
+#' the comparison is on the same footing as the reliability coefficients, and
+#' the difference is expressed as a share of total scaled variance so that it
+#' is comparable across designs and fits.
 #'
-#' @param scope "benchmark" compares the variation seen when ranking on a
-#'   randomly chosen benchmark (model and benchmark-model terms against
-#'   scaffold and benchmark-scaffold terms). "task" additionally includes the
-#'   task-indexed interactions, i.e. the comparison at the level of a single
-#'   task within a benchmark.
-#' @return A one-row tibble of posterior summaries, plus the draws themselves
-#'   in the `draws` list-column for plotting.
-model_vs_scaffold_contrast <- function(vc,
-                                       d = design(1, 1, 1),
-                                       scope = c("benchmark", "task"),
-                                       ci = CI_LEVEL) {
-  scope <- match.arg(scope)
-
-  # Design-scaled components, so that the contrast is on the same footing as
-  # the reliability coefficients. Components a decomposition does not contain
-  # (there is no benchmark facet in a per-benchmark fit) contribute nothing.
+#' Components a decomposition does not contain contribute nothing, so the same
+#' call works on a per-benchmark fit (no benchmark facet) and a pooled one.
+#'
+#' @param vc A `vcomp`.
+#' @param left,right Character vectors of component codes.
+#' @param d A design from `design()`.
+#' @param label Short name for the contrast, carried through to the output.
+#' @return A one-row tibble of posterior summaries, the two exceedance
+#'   probabilities, and the draws in a `draws` list-column for plotting.
+component_contrast <- function(vc, left, right, d = design(1, 1, 1),
+                               label = NA_character_, ci = CI_LEVEL) {
   sc <- scaled_components(vc, d)
-  term <- function(k) if (is.null(sc[[k]])) 0 else sc[[k]]
-
-  model_side    <- term("M") + term("BM")
-  scaffold_side <- term("A") + term("BA")
-
-  if (scope == "task") {
-    model_side    <- model_side + term("IM")
-    scaffold_side <- scaffold_side + term("IA")
+  side <- function(keys) {
+    present <- purrr::compact(sc[keys])
+    if (!length(present)) return(0)
+    Reduce(`+`, present)
   }
 
   total <- Reduce(`+`, sc)
-  contrast <- (model_side - scaffold_side) / total
+  contrast <- (side(left) - side(right)) / total
 
   summarize_quantity(contrast, ci = ci) |>
     mutate(
-      scope = scope,
+      label = label,
+      left  = paste(left, collapse = "+"),
+      right = paste(right, collapse = "+"),
       n_tasks = d[["I"]], n_benchmarks = d[["B"]], n_scaffolds = d[["A"]],
-      p_model_exceeds_scaffold = prob_positive(contrast),
-      p_scaffold_exceeds_model = 1 - prob_positive(contrast),
+      p_left_exceeds_right = prob_positive(contrast),
+      p_right_exceeds_left = 1 - prob_positive(contrast),
       draws = list(if (inherits(contrast, "rvar")) as.numeric(posterior::draws_of(contrast)) else contrast),
       .before = 1
     )
+}
+
+
+#' The two model-versus-scaffold contrasts reported in the paper.
+#'
+#' Section 5.2 makes a two-part claim, and the parts point in different
+#' directions, so they are computed as separate contrasts rather than one
+#' summary:
+#'
+#'   "main"  sigma^2_M vs sigma^2_A -- do models differ more than scaffolds do
+#'           on average? The posterior favours neither direction.
+#'   "task"  sigma^2_IM[B] vs sigma^2_IA[B] -- does the scaffold change *which
+#'           tasks* get solved more than the model does? Here it does.
+#'
+#' Together these say a scaffold can change which tasks a system solves
+#' without making it uniformly stronger.
+#'
+#' @param scope "main", "task", or "both".
+model_vs_scaffold_contrast <- function(vc,
+                                       d = design(1, 1, 1),
+                                       scope = c("both", "main", "task"),
+                                       ci = CI_LEVEL) {
+  scope <- match.arg(scope)
+
+  contrasts <- list(
+    main = function() component_contrast(vc, "M", "A", d, "main effects", ci),
+    task = function() component_contrast(vc, "IM", "IA", d, "task interactions", ci)
+  )
+  wanted <- if (scope == "both") names(contrasts) else scope
+
+  purrr::map(wanted, \(s) contrasts[[s]]() |> mutate(scope = s, .before = 1)) |>
+    bind_rows() |>
+    rename(p_model_exceeds_scaffold = p_left_exceeds_right,
+           p_scaffold_exceeds_model = p_right_exceeds_left)
 }

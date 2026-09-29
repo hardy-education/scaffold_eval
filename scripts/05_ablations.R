@@ -95,19 +95,17 @@ if (RUN_LOBO_BAYES) {
   # The model-vs-scaffold conclusion, recomputed under each deletion. The
   # paper reports the range of these probabilities alongside the headline.
   lobo_contrast <- purrr::imap(lobo_vcs, \(vc, b) {
-    bind_rows(
-      model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "benchmark"),
-      model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "task")
-    ) |> mutate(removed = b, .before = 1)
+    model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "both") |>
+      mutate(removed = b, .before = 1)
   }) |> bind_rows()
 
-  save_table(lobo_contrast |> select(removed, scope, median, low, high,
+  save_table(lobo_contrast |> select(removed, scope, label, median, low, high,
                                      p_scaffold_exceeds_model),
              "ablation_lobo_model_vs_scaffold", digits = 3)
 
   for (s in unique(lobo_contrast$scope)) {
     r <- range(lobo_contrast$p_scaffold_exceeds_model[lobo_contrast$scope == s])
-    message(sprintf("P(scaffold > model), %s scope, across LOBO refits: %.0f%% to %.0f%%",
+    message(sprintf("P(scaffold > model), %s contrast, across LOBO refits: %.0f%% to %.0f%%",
                     s, 100 * r[1], 100 * r[2]))
   }
 

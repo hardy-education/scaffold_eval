@@ -153,36 +153,130 @@ check("shares are reported for every component",
       nrow(shares), nrow(component_registry("leaderboard")))
 
 
-cat("\nModel vs. scaffold contrast\n")
-ct <- model_vs_scaffold_contrast(vcp, design(1, 1, 1), scope = "benchmark")
+cat("\nModel vs. scaffold, as the paper reports it\n")
+
+# The revised framing compares single components pairwise rather than summing
+# model-side against scaffold-side terms; `component_contrast()` below checks
+# the arithmetic, and these check the wrapper wires it up the right way round.
+ct <- model_vs_scaffold_contrast(vcp, design(1, 1, 1), scope = "main")
 with(as.list(pool_v), {
   total <- B + I + M + A + BM + BA + MA + IM + IA + BMA + IMA + e
-  check("benchmark-scope contrast matches its definition",
-        ct$estimate, ((M + BM) - (A + BA)) / total)
+  check("main-effect wrapper contrasts M against A",
+        ct$estimate, (M - A) / total)
 })
 check("scaffold and model exceedance probabilities are complementary",
       ct$p_model_exceeds_scaffold + ct$p_scaffold_exceeds_model, 1)
 
-# "task" scope brings the item-indexed interactions into the comparison.
 ct_task <- model_vs_scaffold_contrast(vcp, design(10, 1, 1), scope = "task")
 with(as.list(pool_v), {
   ni <- 10
   total <- B + I / ni + M + A + BM + BA + MA + IM / ni + IA / ni + BMA + IMA / ni + e / ni
-  check("task-scope contrast matches its definition",
-        ct_task$estimate,
-        ((M + BM + IM / ni) - (A + BA + IA / ni)) / total)
+  check("task-interaction wrapper contrasts IM against IA",
+        ct_task$estimate, (IM / ni - IA / ni) / total)
 })
 
-# The contrast must also work on a decomposition that has no benchmark facet:
-# components the registry does not contain contribute nothing rather than
-# collapsing the arithmetic to a zero-length vector.
+# The wrapper must also work on a decomposition with no benchmark facet.
 ct_bench <- model_vs_scaffold_contrast(vcb, design(10, 1, 1), scope = "task")
 with(as.list(bench_v), {
   ni <- 10
   total <- I / ni + M + A + MA + IM / ni + IA / ni + e / ni
   check("contrast works on a per-benchmark decomposition",
-        ct_bench$estimate, ((M + IM / ni) - (A + IA / ni)) / total)
+        ct_bench$estimate, (IM / ni - IA / ni) / total)
 })
+
+
+cat("\nScaffold as the object of measurement\n")
+
+# Ranking scaffolds is the mirror image of ranking models: the model facet
+# becomes the error term.
+# The mirror is exact: whichever facet is not the object supplies the
+# compatibility error term, so n_models plays the role n_scaffolds plays when
+# ranking models.
+nm <- 7
+with(as.list(bench_v), {
+  check("scaffold-ranking reliability mirrors model-ranking",
+        ep2(vcb, design(n_tasks = ni, n_models = nm), object = "scaffold"),
+        A / (A + IA / ni + MA / nm + e / (ni * nm)))
+})
+with(as.list(bench_v), {
+  check("the two objects are exact mirrors under swapped counts",
+        ep2(vcb, design(n_tasks = ni, n_scaffolds = nm), object = "model"),
+        M / (M + IM / ni + MA / nm + e / (ni * nm)))
+})
+
+part_a <- gt_partition(vcp, design(ni, nb, na), object = "scaffold")
+check("scaffold main effect is the universe score when ranking scaffolds",
+      part_a$terms$role[part_a$terms$component == "A"], "universe")
+check("model main effect carries no scaffold signal",
+      part_a$terms$role[part_a$terms$component == "M"], "absolute_only")
+check("model-scaffold interaction is relative error for both objects",
+      part_a$terms$role[part_a$terms$component == "MA"], "relative_error")
+
+# With the scaffold as object, the scaffold count is no longer an error
+# divisor -- averaging over more scaffolds cannot sharpen a scaffold ranking.
+check("scaffold count does not affect scaffold-ranking reliability",
+      ep2(vcb, design(n_tasks = ni, n_scaffolds = 1), object = "scaffold"),
+      ep2(vcb, design(n_tasks = ni, n_scaffolds = 9), object = "scaffold"))
+check("model count does not affect model-ranking reliability",
+      ep2(vcb, design(n_tasks = ni, n_models = 1), object = "model"),
+      ep2(vcb, design(n_tasks = ni, n_models = 9), object = "model"))
+
+
+cat("\nTask reliability\n")
+
+with(as.list(bench_v), {
+  check("Erho^2_M(i) is the model share against task-model interaction",
+        task_reliability(vcb, "model"), M / (M + IM))
+  check("Erho^2_A(i) is the scaffold share against task-scaffold interaction",
+        task_reliability(vcb, "scaffold"), A / (A + IA))
+  check("averaging over tasks raises task reliability",
+        task_reliability(vcb, "model", n_tasks = 10), M / (M + IM / 10))
+})
+
+
+cat("\nComponent contrasts\n")
+
+# The two contrasts the paper reports are pairwise on single components.
+main <- component_contrast(vcp, "M", "A", design(1, 1, 1))
+with(as.list(pool_v), {
+  total <- B + I + M + A + BM + BA + MA + IM + IA + BMA + IMA + e
+  check("main-effect contrast is (M - A) over total variance",
+        main$estimate, (M - A) / total)
+})
+
+task_c <- component_contrast(vcp, "IM", "IA", design(1, 1, 1))
+with(as.list(pool_v), {
+  total <- B + I + M + A + BM + BA + MA + IM + IA + BMA + IMA + e
+  check("task-interaction contrast is (IM - IA) over total variance",
+        task_c$estimate, (IM - IA) / total)
+})
+
+check("a contrast of a component with itself is exactly zero",
+      component_contrast(vcp, "M", "M", design(1, 1, 1))$estimate, 0)
+
+check("reversing the sides negates the contrast",
+      component_contrast(vcp, "A", "M", design(1, 1, 1))$estimate, -main$estimate)
+
+# Components absent from a decomposition must contribute nothing rather than
+# collapsing the arithmetic.
+check("contrasts work on a decomposition lacking the named components",
+      is.finite(component_contrast(vcb, c("M", "BM"), c("A", "BA"),
+                                   design(1, 1, 1))$estimate), TRUE)
+
+both <- model_vs_scaffold_contrast(vcp, design(1, 1, 1), scope = "both")
+check("the paper reports two contrasts, not one", nrow(both), 2)
+check("both contrasts are labelled", all(!is.na(both$label)), TRUE)
+
+
+cat("\nDesign cost\n")
+
+check("trials are tasks x benchmarks x scaffolds",
+      evaluation_trials(10, 9, 2), 180)
+check("cost is linear in trials and models",
+      design_cost(10, 9, 2, n_models = 5, cost_per_trial = 2), 180 * 5 * 2)
+check("adding scaffolds multiplies cost without adding tasks",
+      design_cost(10, 9, 2, n_models = 1, cost_per_trial = 1) /
+        design_cost(10, 9, 1, n_models = 1, cost_per_trial = 1), 2)
 
 
 cat("\n", if (failures == 0L) "All checks passed.\n" else

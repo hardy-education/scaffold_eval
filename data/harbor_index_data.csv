@@ -1,0 +1,1477 @@
+benchmark,task_id,model,agent,outcome,resp,domain,judged_score
+algotune,algotune-optimize-lti-sim,DeepSeek V4,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,DeepSeek V4,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,GLM 5.2,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,GLM 5.2,terminus-2,FP,1,software engineering,0
+algotune,algotune-optimize-lti-sim,GPT-5.5,terminus-2,TP,1,software engineering,1
+algotune,algotune-optimize-lti-sim,GPT-5.5,codex,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Gemini 3.1,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Kimi K2.6,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Kimi K2.6,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,MiMo V2.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,MiMo V2.5,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,MiniMax M3,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,MiniMax M3,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Opus 4.8,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Opus 4.8,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Qwen3.7,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-lti-sim,Qwen3.7,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,DeepSeek V4,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,GLM 5.2,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,GLM 5.2,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,GPT-5.5,codex,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,GPT-5.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Gemini 3.1,terminus-2,FP,1,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Kimi K2.6,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Kimi K2.6,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,MiMo V2.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,MiniMax M3,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,MiniMax M3,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Opus 4.8,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Opus 4.8,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Qwen3.7,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,Qwen3.7,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,DeepSeek V4,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,DeepSeek V4,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,GLM 5.2,terminus-2,TP,1,software engineering,1
+algotune,algotune-optimize-ode-seirs,GLM 5.2,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,GPT-5.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,GPT-5.5,codex,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Gemini 3.1,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Kimi K2.6,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Kimi K2.6,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,MiMo V2.5,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,MiMo V2.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,MiniMax M3,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,MiniMax M3,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Opus 4.8,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Opus 4.8,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Qwen3.7,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-ode-seirs,Qwen3.7,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,DeepSeek V4,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,GLM 5.2,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,GLM 5.2,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,GPT-5.5,codex,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,GPT-5.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Gemini 3.1,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Kimi K2.6,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Kimi K2.6,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,MiMo V2.5,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,MiMo V2.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,MiniMax M3,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Opus 4.8,terminus-2,TP,1,software engineering,1
+algotune,algotune-optimize-outer-product,Opus 4.8,claude-code,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Qwen3.7,terminus-2,TN,0,software engineering,0
+algotune,algotune-optimize-outer-product,Qwen3.7,claude-code,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,DeepSeek V4,claude-code,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,DeepSeek V4,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,GLM 5.2,claude-code,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,GLM 5.2,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,GPT-5.5,codex,TP,1,software engineering,1
+algotune,algotune-simplex-projection-speedup,GPT-5.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,Gemini 3.1,terminus-2,TP,1,software engineering,1
+algotune,algotune-simplex-projection-speedup,Kimi K2.6,claude-code,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,Kimi K2.6,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,MiMo V2.5,claude-code,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,MiMo V2.5,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,MiniMax M3,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,MiniMax M3,claude-code,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,Opus 4.8,claude-code,FN,0,software engineering,1
+algotune,algotune-simplex-projection-speedup,Opus 4.8,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,Qwen3.7,terminus-2,TN,0,software engineering,0
+algotune,algotune-simplex-projection-speedup,Qwen3.7,claude-code,TN,0,software engineering,0
+arcagi2,arcagi2-grid-transform-88e3,DeepSeek V4,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,GLM 5.2,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,GPT-5.5,codex,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,GPT-5.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Gemini 3.1,gemini-cli,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Gemini 3.1,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Kimi K2.6,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Kimi K2.6,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,MiniMax M3,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Opus 4.8,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-88e3,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,DeepSeek V4,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,GLM 5.2,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,GPT-5.5,codex,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,GPT-5.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Gemini 3.1,gemini-cli,TP,1,mathematics and reasoning,1
+arcagi2,arcagi2-grid-transform-8b7b,Gemini 3.1,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Kimi K2.6,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Kimi K2.6,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,MiniMax M3,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Opus 4.8,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-8b7b,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,DeepSeek V4,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,GLM 5.2,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,GPT-5.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,GPT-5.5,codex,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Gemini 3.1,gemini-cli,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Gemini 3.1,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Kimi K2.6,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Kimi K2.6,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,MiniMax M3,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Opus 4.8,claude-code,TP,1,mathematics and reasoning,1
+arcagi2,arcagi2-grid-transform-a32d,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-a32d,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,DeepSeek V4,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,GLM 5.2,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,GPT-5.5,codex,TP,1,mathematics and reasoning,1
+arcagi2,arcagi2-grid-transform-de80,GPT-5.5,terminus-2,TP,1,mathematics and reasoning,1
+arcagi2,arcagi2-grid-transform-de80,Gemini 3.1,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Gemini 3.1,gemini-cli,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Kimi K2.6,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Kimi K2.6,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,MiniMax M3,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Opus 4.8,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-de80,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,DeepSeek V4,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,GLM 5.2,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,GPT-5.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,GPT-5.5,codex,TP,1,mathematics and reasoning,1
+arcagi2,arcagi2-grid-transform-faa9,Gemini 3.1,terminus-2,TP,1,mathematics and reasoning,1
+arcagi2,arcagi2-grid-transform-faa9,Gemini 3.1,gemini-cli,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,Kimi K2.6,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,Kimi K2.6,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,MiniMax M3,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,Opus 4.8,claude-code,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+arcagi2,arcagi2-grid-transform-faa9,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+bixbench,bix-cpg-density-jackdaw,DeepSeek V4,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,DeepSeek V4,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,GLM 5.2,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,GLM 5.2,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,GPT-5.5,codex,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,GPT-5.5,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Gemini 3.1,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Gemini 3.1,gemini-cli,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Kimi K2.6,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Kimi K2.6,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,MiMo V2.5,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,MiMo V2.5,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,MiniMax M3,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,MiniMax M3,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Opus 4.8,terminus-2,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Opus 4.8,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Qwen3.7,claude-code,TN,0,science,0
+bixbench,bix-cpg-density-jackdaw,Qwen3.7,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,DeepSeek V4,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,DeepSeek V4,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,GLM 5.2,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,GLM 5.2,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,GPT-5.5,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,GPT-5.5,codex,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Gemini 3.1,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Gemini 3.1,gemini-cli,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Kimi K2.6,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Kimi K2.6,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,MiMo V2.5,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,MiMo V2.5,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,MiniMax M3,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,MiniMax M3,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Opus 4.8,terminus-2,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Opus 4.8,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Qwen3.7,claude-code,TN,0,science,0
+bixbench,bix-diff-expr-mirna,Qwen3.7,terminus-2,TN,0,science,0
+bixbench,bix-filter-chip-variants,DeepSeek V4,claude-code,TN,0,science,0
+bixbench,bix-filter-chip-variants,DeepSeek V4,terminus-2,TP,1,science,1
+bixbench,bix-filter-chip-variants,GLM 5.2,terminus-2,TP,1,science,1
+bixbench,bix-filter-chip-variants,GLM 5.2,claude-code,TN,0,science,0
+bixbench,bix-filter-chip-variants,GPT-5.5,terminus-2,TP,1,science,1
+bixbench,bix-filter-chip-variants,GPT-5.5,codex,TP,1,science,1
+bixbench,bix-filter-chip-variants,Gemini 3.1,terminus-2,TN,0,science,0
+bixbench,bix-filter-chip-variants,Gemini 3.1,gemini-cli,TN,0,science,0
+bixbench,bix-filter-chip-variants,Kimi K2.6,claude-code,TP,1,science,1
+bixbench,bix-filter-chip-variants,Kimi K2.6,terminus-2,TP,1,science,1
+bixbench,bix-filter-chip-variants,MiMo V2.5,terminus-2,TP,1,science,1
+bixbench,bix-filter-chip-variants,MiMo V2.5,claude-code,TN,0,science,0
+bixbench,bix-filter-chip-variants,MiniMax M3,claude-code,TN,0,science,0
+bixbench,bix-filter-chip-variants,MiniMax M3,terminus-2,TN,0,science,0
+bixbench,bix-filter-chip-variants,Opus 4.8,claude-code,TN,0,science,0
+bixbench,bix-filter-chip-variants,Opus 4.8,terminus-2,TN,0,science,0
+bixbench,bix-filter-chip-variants,Qwen3.7,claude-code,TN,0,science,0
+bixbench,bix-filter-chip-variants,Qwen3.7,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,DeepSeek V4,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,DeepSeek V4,claude-code,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,GLM 5.2,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,GLM 5.2,claude-code,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,GPT-5.5,codex,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,GPT-5.5,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Gemini 3.1,gemini-cli,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Gemini 3.1,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Kimi K2.6,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Kimi K2.6,claude-code,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,MiMo V2.5,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,MiMo V2.5,claude-code,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,MiniMax M3,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,MiniMax M3,claude-code,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Opus 4.8,claude-code,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Opus 4.8,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Qwen3.7,terminus-2,TN,0,science,0
+bixbench,bix-immune-pathway-enrichment,Qwen3.7,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,DeepSeek V4,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,DeepSeek V4,terminus-2,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,GLM 5.2,terminus-2,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,GLM 5.2,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,GPT-5.5,codex,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,GPT-5.5,terminus-2,TP,1,science,1
+bixbench,bix-ordinal-logit-covid,Gemini 3.1,terminus-2,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Gemini 3.1,gemini-cli,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Kimi K2.6,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Kimi K2.6,terminus-2,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,MiMo V2.5,terminus-2,TP,1,science,1
+bixbench,bix-ordinal-logit-covid,MiMo V2.5,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,MiniMax M3,claude-code,TP,1,science,1
+bixbench,bix-ordinal-logit-covid,MiniMax M3,terminus-2,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Opus 4.8,terminus-2,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Opus 4.8,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Qwen3.7,claude-code,TN,0,science,0
+bixbench,bix-ordinal-logit-covid,Qwen3.7,terminus-2,TP,1,science,1
+bigcodebench,build-word2vec-pipeline,DeepSeek V4,claude-code,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,DeepSeek V4,terminus-2,TP,1,software engineering,1
+bigcodebench,build-word2vec-pipeline,GLM 5.2,terminus-2,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,GLM 5.2,claude-code,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,GPT-5.5,codex,TP,1,software engineering,1
+bigcodebench,build-word2vec-pipeline,GPT-5.5,terminus-2,TP,1,software engineering,1
+bigcodebench,build-word2vec-pipeline,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,Gemini 3.1,terminus-2,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,Kimi K2.6,claude-code,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,Kimi K2.6,terminus-2,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,MiMo V2.5,terminus-2,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,MiMo V2.5,claude-code,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,MiniMax M3,claude-code,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,MiniMax M3,terminus-2,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,Opus 4.8,terminus-2,TP,1,software engineering,1
+bigcodebench,build-word2vec-pipeline,Opus 4.8,claude-code,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,Qwen3.7,terminus-2,TN,0,software engineering,0
+bigcodebench,build-word2vec-pipeline,Qwen3.7,claude-code,TN,0,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,DeepSeek V4,claude-code,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,Gemini 3.1,gemini-cli,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,Gemini 3.1,terminus-2,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,Kimi K2.6,claude-code,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,MiMo V2.5,terminus-2,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,MiniMax M3,terminus-2,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,Opus 4.8,claude-code,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,Opus 4.8,terminus-2,TN,0,science,0
+codepde,codepde-solve-navier-stokes-1d,Qwen3.7,claude-code,TN,0,science,0
+cybergym,cybergym-arvo-368,DeepSeek V4,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,DeepSeek V4,claude-code,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,GLM 5.2,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,GLM 5.2,claude-code,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,GPT-5.5,codex,TP,1,safety and security,1
+cybergym,cybergym-arvo-368,GPT-5.5,terminus-2,TP,1,safety and security,1
+cybergym,cybergym-arvo-368,Gemini 3.1,gemini-cli,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,Gemini 3.1,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,Kimi K2.6,claude-code,TP,1,safety and security,1
+cybergym,cybergym-arvo-368,Kimi K2.6,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,MiMo V2.5,claude-code,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,MiMo V2.5,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,MiniMax M3,claude-code,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,MiniMax M3,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,Opus 4.8,claude-code,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,Opus 4.8,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,Qwen3.7,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-arvo-368,Qwen3.7,claude-code,TP,1,safety and security,1
+cybergym,cybergym-ossfuzz-42m,DeepSeek V4,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,DeepSeek V4,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,GLM 5.2,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,GLM 5.2,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,GPT-5.5,codex,TP,1,safety and security,1
+cybergym,cybergym-ossfuzz-42m,GPT-5.5,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Gemini 3.1,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Gemini 3.1,gemini-cli,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Kimi K2.6,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Kimi K2.6,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,MiMo V2.5,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,MiMo V2.5,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,MiniMax M3,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,MiniMax M3,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Opus 4.8,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Opus 4.8,terminus-2,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Qwen3.7,claude-code,TN,0,safety and security,0
+cybergym,cybergym-ossfuzz-42m,Qwen3.7,terminus-2,TN,0,safety and security,0
+dacode,dacode-predict-essay-scores,DeepSeek V4,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,DeepSeek V4,terminus-2,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,GLM 5.2,terminus-2,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,GLM 5.2,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,GPT-5.5,codex,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,GPT-5.5,terminus-2,TP,1,data and analytics,1
+dacode,dacode-predict-essay-scores,Gemini 3.1,gemini-cli,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,Gemini 3.1,terminus-2,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,Kimi K2.6,terminus-2,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,Kimi K2.6,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,MiMo V2.5,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,MiMo V2.5,terminus-2,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,MiniMax M3,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,MiniMax M3,terminus-2,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,Opus 4.8,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,Opus 4.8,terminus-2,TP,1,data and analytics,1
+dacode,dacode-predict-essay-scores,Qwen3.7,claude-code,TN,0,data and analytics,0
+dacode,dacode-predict-essay-scores,Qwen3.7,terminus-2,TN,0,data and analytics,0
+featurebench,featurebench-add-feature-lightning-hooks,DeepSeek V4,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,DeepSeek V4,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,GLM 5.2,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,GLM 5.2,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,GPT-5.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,GPT-5.5,codex,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Gemini 3.1,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Kimi K2.6,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Kimi K2.6,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,MiMo V2.5,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,MiMo V2.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,MiniMax M3,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,MiniMax M3,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Opus 4.8,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Opus 4.8,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Qwen3.7,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-lightning-hooks,Qwen3.7,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,GPT-5.5,codex,TP,1,software engineering,1
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,GPT-5.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Gemini 3.1,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Opus 4.8,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Opus 4.8,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,DeepSeek V4,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,GPT-5.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,GPT-5.5,codex,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Gemini 3.1,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Kimi K2.6,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,MiMo V2.5,claude-code,FN,0,software engineering,1
+featurebench,featurebench-add-feature-mlflow-unity-catalog,MiMo V2.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Opus 4.8,claude-code,FN,0,software engineering,1
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Opus 4.8,terminus-2,TP,1,software engineering,1
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Qwen3.7,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,DeepSeek V4,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,DeepSeek V4,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,GLM 5.2,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,GLM 5.2,claude-code,TP,1,software engineering,1
+featurebench,featurebench-add-feature-xarray-backend-chunks,GPT-5.5,codex,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,GPT-5.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Gemini 3.1,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Kimi K2.6,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Kimi K2.6,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,MiMo V2.5,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,MiMo V2.5,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,MiniMax M3,claude-code,FN,0,software engineering,1
+featurebench,featurebench-add-feature-xarray-backend-chunks,MiniMax M3,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Opus 4.8,claude-code,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Opus 4.8,terminus-2,FN,0,software engineering,1
+featurebench,featurebench-add-feature-xarray-backend-chunks,Qwen3.7,terminus-2,TN,0,software engineering,0
+featurebench,featurebench-add-feature-xarray-backend-chunks,Qwen3.7,claude-code,TN,0,software engineering,0
+gaia,gaia-compare-sciencedirect-domains,DeepSeek V4,claude-code,FP,1,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,GLM 5.2,claude-code,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,GPT-5.5,codex,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Gemini 3.1,gemini-cli,FP,1,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Kimi K2.6,claude-code,FP,1,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,MiMo V2.5,claude-code,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Opus 4.8,terminus-2,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia,gaia-compare-sciencedirect-domains,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,DeepSeek V4,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,GLM 5.2,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,GPT-5.5,terminus-2,TP,1,agent and tools,1
+gaia,gaia-find-chess-winning-move,GPT-5.5,codex,TP,1,agent and tools,1
+gaia,gaia-find-chess-winning-move,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,Kimi K2.6,claude-code,TP,1,agent and tools,1
+gaia,gaia-find-chess-winning-move,MiMo V2.5,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,MiniMax M3,claude-code,TP,1,agent and tools,1
+gaia,gaia-find-chess-winning-move,Opus 4.8,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,DeepSeek V4,claude-code,FP,1,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,GLM 5.2,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,GPT-5.5,codex,TP,1,agent and tools,1
+gaia,gaia-find-flavor-graveyard-rhyme,GPT-5.5,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Gemini 3.1,gemini-cli,TP,1,agent and tools,1
+gaia,gaia-find-flavor-graveyard-rhyme,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Kimi K2.6,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,MiMo V2.5,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Opus 4.8,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Opus 4.8,terminus-2,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-flavor-graveyard-rhyme,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,DeepSeek V4,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,DeepSeek V4,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,GLM 5.2,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,GPT-5.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,GPT-5.5,codex,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,Gemini 3.1,gemini-cli,FN,0.666667,agent and tools,1
+gaia2,gaia2-adapt-hard-1,Gemini 3.1,terminus-2,FN,0.666667,agent and tools,1
+gaia2,gaia2-adapt-hard-1,Kimi K2.6,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,Kimi K2.6,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,MiMo V2.5,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,MiMo V2.5,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,Opus 4.8,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,Opus 4.8,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-1,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-1,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,DeepSeek V4,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-2,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,GLM 5.2,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-2,GLM 5.2,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-2,GPT-5.5,terminus-2,FN,0.333333,agent and tools,1
+gaia2,gaia2-adapt-hard-2,GPT-5.5,codex,FN,0.666667,agent and tools,1
+gaia2,gaia2-adapt-hard-2,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,Kimi K2.6,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,MiMo V2.5,claude-code,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-2,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,MiniMax M3,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-adapt-hard-2,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,Opus 4.8,terminus-2,FN,0.333333,agent and tools,1
+gaia2,gaia2-adapt-hard-2,Opus 4.8,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-adapt-hard-2,Qwen3.7,terminus-2,FN,0,agent and tools,1
+gaia2,gaia2-ambiguous,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,DeepSeek V4,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,GLM 5.2,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,GPT-5.5,codex,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,GPT-5.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,Kimi K2.6,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,MiMo V2.5,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,Opus 4.8,claude-code,FN,0.888889,agent and tools,1
+gaia2,gaia2-ambiguous,Opus 4.8,terminus-2,TP,1,agent and tools,1
+gaia2,gaia2-ambiguous,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-ambiguous,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,DeepSeek V4,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,GLM 5.2,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,GPT-5.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,GPT-5.5,codex,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Kimi K2.6,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,MiMo V2.5,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Opus 4.8,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Opus 4.8,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-1,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,DeepSeek V4,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,GLM 5.2,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,GLM 5.2,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,GPT-5.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,GPT-5.5,codex,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Kimi K2.6,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,MiMo V2.5,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,MiniMax M3,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,MiniMax M3,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Opus 4.8,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Opus 4.8,terminus-2,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Qwen3.7,claude-code,TN,0,agent and tools,0
+gaia2,gaia2-timed-2,Qwen3.7,terminus-2,TN,0,agent and tools,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,DeepSeek V4,claude-code,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,DeepSeek V4,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,GLM 5.2,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,GLM 5.2,claude-code,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,GPT-5.5,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,GPT-5.5,codex,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Gemini 3.1,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Kimi K2.6,claude-code,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Kimi K2.6,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,MiMo V2.5,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,MiMo V2.5,claude-code,TP,1,knowledge,1
+gpqadiamond,gpqadiamond-cope-rearrangement-products,MiniMax M3,claude-code,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,MiniMax M3,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Opus 4.8,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Opus 4.8,claude-code,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Qwen3.7,terminus-2,TN,0,knowledge,0
+gpqadiamond,gpqadiamond-cope-rearrangement-products,Qwen3.7,claude-code,TN,0,knowledge,0
+gso,gso-speedup-hf-datasets,DeepSeek V4,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,GLM 5.2,claude-code,TP,1,software engineering,1
+gso,gso-speedup-hf-datasets,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,MiMo V2.5,claude-code,TP,1,software engineering,1
+gso,gso-speedup-hf-datasets,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,MiniMax M3,claude-code,TP,1,software engineering,1
+gso,gso-speedup-hf-datasets,Opus 4.8,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Qwen3.7,claude-code,TN,0,software engineering,0
+gso,gso-speedup-hf-datasets,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,DeepSeek V4,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,GLM 5.2,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,MiMo V2.5,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,MiniMax M3,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Opus 4.8,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Qwen3.7,claude-code,TN,0,software engineering,0
+gso,gso-speedup-numpy-strings,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,DeepSeek V4,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,GLM 5.2,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,MiMo V2.5,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,MiniMax M3,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Opus 4.8,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-merge,Qwen3.7,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,DeepSeek V4,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,GLM 5.2,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,MiMo V2.5,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,Qwen3.7,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,DeepSeek V4,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,GLM 5.2,claude-code,FN,0,software engineering,1
+gso,gso-speedup-pandas-seq-to-range,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,MiMo V2.5,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,MiniMax M3,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Opus 4.8,terminus-2,FN,0,software engineering,1
+gso,gso-speedup-pandas-seq-to-range,Qwen3.7,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pandas-seq-to-range,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,DeepSeek V4,terminus-2,FN,0,software engineering,1
+gso,gso-speedup-pillow-filter,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,GLM 5.2,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,MiMo V2.5,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,MiniMax M3,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Opus 4.8,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Qwen3.7,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pillow-filter,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,DeepSeek V4,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,DeepSeek V4,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,GLM 5.2,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,GLM 5.2,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,GPT-5.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,GPT-5.5,codex,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Gemini 3.1,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Kimi K2.6,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Kimi K2.6,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,MiMo V2.5,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,MiMo V2.5,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,MiniMax M3,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,MiniMax M3,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Opus 4.8,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Opus 4.8,claude-code,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Qwen3.7,terminus-2,TN,0,software engineering,0
+gso,gso-speedup-pydantic-enum,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Kimi K2.6,terminus-2,TN,0,software engineering,0
+hle,hle-dirac-fermion-tunneling,DeepSeek V4,claude-code,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,GPT-5.5,codex,FN,0.888889,knowledge,1
+hle,hle-dirac-fermion-tunneling,Gemini 3.1,terminus-2,TN,0.333333,knowledge,0
+hle,hle-dirac-fermion-tunneling,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-dirac-fermion-tunneling,Qwen3.7,claude-code,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,DeepSeek V4,claude-code,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,GPT-5.5,codex,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,Gemini 3.1,gemini-cli,FN,0,knowledge,1
+hle,hle-fibered-category-schemes,Gemini 3.1,terminus-2,FN,0,knowledge,1
+hle,hle-fibered-category-schemes,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-fibered-category-schemes,Qwen3.7,claude-code,FN,0,knowledge,1
+hle,hle-identify-city-from-photo,DeepSeek V4,claude-code,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,GPT-5.5,codex,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Gemini 3.1,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-identify-city-from-photo,Qwen3.7,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,DeepSeek V4,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,GPT-5.5,codex,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Gemini 3.1,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Gemini 3.1,gemini-cli,TP,1,knowledge,1
+hle,hle-identify-ingvar-runestone,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-identify-ingvar-runestone,Qwen3.7,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,GPT-5.5,codex,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Gemini 3.1,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Qwen3.7,claude-code,TN,0,knowledge,0
+hle,hle-interval-coverage-bound,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,DeepSeek V4,claude-code,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,GPT-5.5,codex,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Gemini 3.1,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-name-alkaloid-compound,Qwen3.7,claude-code,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,DeepSeek V4,terminus-2,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,GLM 5.2,claude-code,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,GLM 5.2,terminus-2,TN,0.222222,knowledge,0
+hle,hle-shock-wave-density-profile,GPT-5.5,terminus-2,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,GPT-5.5,codex,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,Gemini 3.1,terminus-2,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,Kimi K2.6,claude-code,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-shock-wave-density-profile,Opus 4.8,terminus-2,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,Opus 4.8,claude-code,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,Qwen3.7,terminus-2,TP,1,knowledge,1
+hle,hle-shock-wave-density-profile,Qwen3.7,claude-code,TP,1,knowledge,1
+hle,hle-vowel-marking-system,DeepSeek V4,claude-code,TN,0,knowledge,0
+hle,hle-vowel-marking-system,DeepSeek V4,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,GLM 5.2,claude-code,TN,0,knowledge,0
+hle,hle-vowel-marking-system,GLM 5.2,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,GPT-5.5,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,GPT-5.5,codex,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Gemini 3.1,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Gemini 3.1,gemini-cli,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Kimi K2.6,claude-code,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Kimi K2.6,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,MiMo V2.5,claude-code,TN,0,knowledge,0
+hle,hle-vowel-marking-system,MiMo V2.5,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,MiniMax M3,claude-code,TN,0,knowledge,0
+hle,hle-vowel-marking-system,MiniMax M3,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Opus 4.8,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Opus 4.8,claude-code,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Qwen3.7,terminus-2,TN,0,knowledge,0
+hle,hle-vowel-marking-system,Qwen3.7,claude-code,TN,0,knowledge,0
+labbench,labbench-count-deg-in-pathway,DeepSeek V4,claude-code,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,DeepSeek V4,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,GLM 5.2,terminus-2,TP,1,science,1
+labbench,labbench-count-deg-in-pathway,GPT-5.5,codex,TP,1,science,1
+labbench,labbench-count-deg-in-pathway,GPT-5.5,terminus-2,TP,1,science,1
+labbench,labbench-count-deg-in-pathway,Gemini 3.1,gemini-cli,TP,1,science,1
+labbench,labbench-count-deg-in-pathway,Gemini 3.1,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,Kimi K2.6,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,Kimi K2.6,claude-code,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,MiMo V2.5,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,MiniMax M3,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,MiniMax M3,claude-code,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,Opus 4.8,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,Opus 4.8,claude-code,TP,1,science,1
+labbench,labbench-count-deg-in-pathway,Qwen3.7,terminus-2,TN,0,science,0
+labbench,labbench-count-deg-in-pathway,Qwen3.7,claude-code,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,DeepSeek V4,claude-code,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,DeepSeek V4,terminus-2,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,GLM 5.2,claude-code,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,GPT-5.5,codex,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,GPT-5.5,terminus-2,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,Gemini 3.1,terminus-2,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,Gemini 3.1,gemini-cli,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,Kimi K2.6,claude-code,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,MiMo V2.5,claude-code,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,MiniMax M3,claude-code,TP,1,science,1
+labbench,labbench-habenula-fluorescence-change,Opus 4.8,claude-code,TP,1,science,1
+labbench,labbench-habenula-fluorescence-change,Opus 4.8,terminus-2,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,Qwen3.7,claude-code,TN,0,science,0
+labbench,labbench-habenula-fluorescence-change,Qwen3.7,terminus-2,FP,1,science,0
+labbench,labbench-highest-auc-neuron-set,DeepSeek V4,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,DeepSeek V4,claude-code,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,GLM 5.2,claude-code,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,GLM 5.2,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,GPT-5.5,codex,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,GPT-5.5,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,Gemini 3.1,gemini-cli,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,Gemini 3.1,terminus-2,TP,1,science,1
+labbench,labbench-highest-auc-neuron-set,Kimi K2.6,claude-code,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,Kimi K2.6,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,MiMo V2.5,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,MiMo V2.5,claude-code,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,MiniMax M3,claude-code,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,MiniMax M3,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,Opus 4.8,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,Opus 4.8,claude-code,TP,1,science,1
+labbench,labbench-highest-auc-neuron-set,Qwen3.7,terminus-2,TN,0,science,0
+labbench,labbench-highest-auc-neuron-set,Qwen3.7,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,DeepSeek V4,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,DeepSeek V4,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,GLM 5.2,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,GLM 5.2,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,GPT-5.5,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,GPT-5.5,codex,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,Gemini 3.1,gemini-cli,TP,1,science,1
+labbench,labbench-read-asap2f-step-response,Gemini 3.1,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,Kimi K2.6,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,Kimi K2.6,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,MiMo V2.5,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,MiMo V2.5,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,MiniMax M3,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,MiniMax M3,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,Opus 4.8,terminus-2,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,Opus 4.8,claude-code,TP,1,science,1
+labbench,labbench-read-asap2f-step-response,Qwen3.7,claude-code,TN,0,science,0
+labbench,labbench-read-asap2f-step-response,Qwen3.7,terminus-2,TN,0,science,0
+omnimath,omnimath-find-perfect-square-functions,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,DeepSeek V4,claude-code,TP,1,mathematics and reasoning,1
+omnimath,omnimath-find-perfect-square-functions,GLM 5.2,claude-code,TP,1,mathematics and reasoning,1
+omnimath,omnimath-find-perfect-square-functions,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,GPT-5.5,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,GPT-5.5,codex,TP,1,mathematics and reasoning,1
+omnimath,omnimath-find-perfect-square-functions,Gemini 3.1,terminus-2,TP,1,mathematics and reasoning,1
+omnimath,omnimath-find-perfect-square-functions,Gemini 3.1,gemini-cli,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,Kimi K2.6,terminus-2,TP,1,mathematics and reasoning,1
+omnimath,omnimath-find-perfect-square-functions,Kimi K2.6,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,Opus 4.8,claude-code,TP,1,mathematics and reasoning,1
+omnimath,omnimath-find-perfect-square-functions,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-find-perfect-square-functions,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,DeepSeek V4,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,DeepSeek V4,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,GLM 5.2,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,GLM 5.2,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,GPT-5.5,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,GPT-5.5,codex,TP,1,mathematics and reasoning,1
+omnimath,omnimath-maximize-gf-sum,Gemini 3.1,terminus-2,TP,1,mathematics and reasoning,1
+omnimath,omnimath-maximize-gf-sum,Gemini 3.1,gemini-cli,TP,1,mathematics and reasoning,1
+omnimath,omnimath-maximize-gf-sum,Kimi K2.6,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,Kimi K2.6,claude-code,TP,1,mathematics and reasoning,1
+omnimath,omnimath-maximize-gf-sum,MiMo V2.5,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,MiMo V2.5,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,MiniMax M3,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,MiniMax M3,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,Opus 4.8,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,Opus 4.8,claude-code,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,Qwen3.7,terminus-2,TN,0,mathematics and reasoning,0
+omnimath,omnimath-maximize-gf-sum,Qwen3.7,claude-code,TN,0,mathematics and reasoning,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,DeepSeek V4,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,DeepSeek V4,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,GLM 5.2,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,GLM 5.2,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,GPT-5.5,codex,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,GPT-5.5,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Gemini 3.1,gemini-cli,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Gemini 3.1,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Kimi K2.6,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Kimi K2.6,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,MiMo V2.5,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,MiMo V2.5,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,MiniMax M3,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,MiniMax M3,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Opus 4.8,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Opus 4.8,terminus-2,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Qwen3.7,claude-code,TN,0,science,0
+qcircuitbench,qcircuitbench-design-ternary-simon-circuit-n3,Qwen3.7,terminus-2,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,DeepSeek V4,terminus-2,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,DeepSeek V4,claude-code,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,GLM 5.2,claude-code,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,GLM 5.2,terminus-2,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,GPT-5.5,terminus-2,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,GPT-5.5,codex,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,Gemini 3.1,terminus-2,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,Gemini 3.1,gemini-cli,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,Kimi K2.6,claude-code,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,Kimi K2.6,terminus-2,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,MiMo V2.5,terminus-2,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,MiMo V2.5,claude-code,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,MiniMax M3,claude-code,TN,0,science,0
+replicationbench,replicationbench-find-galactic-vz-peaks,MiniMax M3,terminus-2,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,Opus 4.8,claude-code,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,Opus 4.8,terminus-2,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,Qwen3.7,terminus-2,TP,1,science,1
+replicationbench,replicationbench-find-galactic-vz-peaks,Qwen3.7,claude-code,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,DeepSeek V4,claude-code,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,DeepSeek V4,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,GLM 5.2,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,GLM 5.2,claude-code,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,GPT-5.5,codex,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,GPT-5.5,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Gemini 3.1,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Gemini 3.1,gemini-cli,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Kimi K2.6,claude-code,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Kimi K2.6,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,MiMo V2.5,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,MiMo V2.5,claude-code,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,MiniMax M3,claude-code,TP,1,science,1
+scicode,scicode-dna-binding-site-scanner,MiniMax M3,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Opus 4.8,claude-code,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Opus 4.8,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Qwen3.7,terminus-2,TN,0,science,0
+scicode,scicode-dna-binding-site-scanner,Qwen3.7,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,DeepSeek V4,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,DeepSeek V4,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,GLM 5.2,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,GLM 5.2,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,GPT-5.5,codex,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,GPT-5.5,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Gemini 3.1,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Gemini 3.1,gemini-cli,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Kimi K2.6,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Kimi K2.6,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,MiMo V2.5,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,MiMo V2.5,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,MiniMax M3,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,MiniMax M3,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Opus 4.8,claude-code,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Opus 4.8,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Qwen3.7,terminus-2,TN,0,science,0
+scicode,scicode-gaussian-beam-through-lens,Qwen3.7,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,DeepSeek V4,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,DeepSeek V4,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,GLM 5.2,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,GLM 5.2,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,GPT-5.5,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,GPT-5.5,codex,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Gemini 3.1,gemini-cli,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Gemini 3.1,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Kimi K2.6,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Kimi K2.6,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,MiMo V2.5,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,MiniMax M3,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,MiniMax M3,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Opus 4.8,terminus-2,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Opus 4.8,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Qwen3.7,claude-code,TN,0,science,0
+scicode,scicode-tetrahedron-dos-integral,Qwen3.7,terminus-2,TN,0,science,0
+skillsbench,skillsbench-model-investment-shock-gdp,DeepSeek V4,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,GLM 5.2,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,GLM 5.2,claude-code,TP,1,agent and tools,1
+skillsbench,skillsbench-model-investment-shock-gdp,GPT-5.5,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,GPT-5.5,codex,TP,1,agent and tools,1
+skillsbench,skillsbench-model-investment-shock-gdp,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,Kimi K2.6,claude-code,TP,1,agent and tools,1
+skillsbench,skillsbench-model-investment-shock-gdp,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,MiMo V2.5,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,MiniMax M3,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,MiniMax M3,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,Opus 4.8,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-model-investment-shock-gdp,Opus 4.8,claude-code,TP,1,agent and tools,1
+skillsbench,skillsbench-model-investment-shock-gdp,Qwen3.7,claude-code,TP,1,agent and tools,1
+skillsbench,skillsbench-model-investment-shock-gdp,Qwen3.7,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,GLM 5.2,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,GLM 5.2,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,GPT-5.5,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,GPT-5.5,codex,TP,1,agent and tools,1
+skillsbench,skillsbench-ocr-receipts-to-excel,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Kimi K2.6,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,MiMo V2.5,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,MiMo V2.5,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,MiniMax M3,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,MiniMax M3,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Opus 4.8,claude-code,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Opus 4.8,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Qwen3.7,terminus-2,TN,0,agent and tools,0
+skillsbench,skillsbench-ocr-receipts-to-excel,Qwen3.7,claude-code,TN,0,agent and tools,0
+sldbench,sldbench-discover-vocab-scaling-law,DeepSeek V4,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,GLM 5.2,claude-code,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,GLM 5.2,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,GPT-5.5,codex,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,GPT-5.5,terminus-2,TP,1,science,1
+sldbench,sldbench-discover-vocab-scaling-law,Gemini 3.1,gemini-cli,FN,0,science,1
+sldbench,sldbench-discover-vocab-scaling-law,Gemini 3.1,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,Kimi K2.6,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,Kimi K2.6,claude-code,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,MiMo V2.5,claude-code,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,MiMo V2.5,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,MiniMax M3,claude-code,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,MiniMax M3,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,Opus 4.8,claude-code,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,Opus 4.8,terminus-2,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,Qwen3.7,claude-code,TN,0,science,0
+sldbench,sldbench-discover-vocab-scaling-law,Qwen3.7,terminus-2,TN,0,science,0
+spider2,spider2-dbt-airport-arrivals,DeepSeek V4,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,DeepSeek V4,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,GLM 5.2,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,GLM 5.2,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,GPT-5.5,codex,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,GPT-5.5,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Gemini 3.1,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Gemini 3.1,gemini-cli,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Kimi K2.6,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Kimi K2.6,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,MiMo V2.5,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,MiMo V2.5,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,MiniMax M3,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,MiniMax M3,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Opus 4.8,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Opus 4.8,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Qwen3.7,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-airport-arrivals,Qwen3.7,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,DeepSeek V4,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,DeepSeek V4,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,GLM 5.2,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,GLM 5.2,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,GPT-5.5,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,GPT-5.5,codex,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Gemini 3.1,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Gemini 3.1,gemini-cli,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Kimi K2.6,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Kimi K2.6,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,MiMo V2.5,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,MiMo V2.5,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,MiniMax M3,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,MiniMax M3,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Opus 4.8,terminus-2,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Opus 4.8,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Qwen3.7,claude-code,TN,0,data and analytics,0
+spider2,spider2-dbt-twilio-messaging,Qwen3.7,terminus-2,TN,0,data and analytics,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,GPT-5.5,codex,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Kimi K2.6,terminus-2,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-file-suffix-chooser,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Opus 4.8,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-file-suffix-chooser,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,GPT-5.5,codex,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Opus 4.8,terminus-2,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-k8s-session-path,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,GPT-5.5,codex,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Gemini 3.1,gemini-cli,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Kimi K2.6,claude-code,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Kimi K2.6,terminus-2,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Opus 4.8,claude-code,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Opus 4.8,terminus-2,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Qwen3.7,claude-code,TP,1,software engineering,1
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,Qwen3.7,terminus-2,TP,1,software engineering,1
+swebenchpro,swebenchpro-improve-process-signal-messages,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,GPT-5.5,codex,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Opus 4.8,terminus-2,TP,1,software engineering,1
+swebenchpro,swebenchpro-improve-process-signal-messages,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchpro,swebenchpro-improve-process-signal-messages,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,GPT-5.5,codex,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Opus 4.8,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-annotate-xy-array-copy,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,GPT-5.5,codex,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,MiniMax M3,terminus-2,TP,1,software engineering,1
+swebenchverified,swebenchverified-fix-django-mti-parent-link,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Opus 4.8,terminus-2,TP,1,software engineering,1
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-mti-parent-link,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,GLM 5.2,claude-code,TP,1,software engineering,1
+swebenchverified,swebenchverified-fix-django-union-queryset-order,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,GPT-5.5,codex,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Opus 4.8,terminus-2,TP,1,software engineering,1
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-django-union-queryset-order,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,GLM 5.2,claude-code,TP,1,software engineering,1
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,GPT-5.5,codex,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,MiniMax M3,claude-code,TP,1,software engineering,1
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Opus 4.8,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Qwen3.7,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-span-selector-axes-limits,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,DeepSeek V4,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,GLM 5.2,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,GLM 5.2,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,GPT-5.5,codex,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,GPT-5.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Kimi K2.6,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,MiMo V2.5,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,MiniMax M3,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,MiniMax M3,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Opus 4.8,claude-code,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Opus 4.8,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Qwen3.7,terminus-2,TN,0,software engineering,0
+swebenchverified,swebenchverified-fix-sphinx-literal-nitpick,Qwen3.7,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,DeepSeek V4,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,GLM 5.2,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,GLM 5.2,terminus-2,TP,1,software engineering,1
+swelancer,swelancer-fix-fab-menu-enter-key,GPT-5.5,codex,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,GPT-5.5,terminus-2,TP,1,software engineering,1
+swelancer,swelancer-fix-fab-menu-enter-key,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,Gemini 3.1,terminus-2,TP,1,software engineering,1
+swelancer,swelancer-fix-fab-menu-enter-key,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,Kimi K2.6,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,MiMo V2.5,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,MiniMax M3,terminus-2,TP,1,software engineering,1
+swelancer,swelancer-fix-fab-menu-enter-key,MiniMax M3,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,Opus 4.8,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,Opus 4.8,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,Qwen3.7,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-fab-menu-enter-key,Qwen3.7,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,DeepSeek V4,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,GLM 5.2,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,GLM 5.2,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,GPT-5.5,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,GPT-5.5,codex,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Gemini 3.1,gemini-cli,TP,1,software engineering,1
+swelancer,swelancer-fix-ios-keyboard-reopen,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Kimi K2.6,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,MiMo V2.5,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,MiniMax M3,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,MiniMax M3,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Opus 4.8,claude-code,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Opus 4.8,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Qwen3.7,terminus-2,TN,0,software engineering,0
+swelancer,swelancer-fix-ios-keyboard-reopen,Qwen3.7,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,DeepSeek V4,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,GLM 5.2,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,GLM 5.2,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,GPT-5.5,terminus-2,TP,1,software engineering,1
+swesmith,swesmith-fix-oauth1-header-params,GPT-5.5,codex,TP,1,software engineering,1
+swesmith,swesmith-fix-oauth1-header-params,Gemini 3.1,gemini-cli,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Kimi K2.6,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Kimi K2.6,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,MiMo V2.5,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,MiMo V2.5,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,MiniMax M3,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,MiniMax M3,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Opus 4.8,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Opus 4.8,terminus-2,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Qwen3.7,claude-code,TN,0,software engineering,0
+swesmith,swesmith-fix-oauth1-header-params,Qwen3.7,terminus-2,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,DeepSeek V4,claude-code,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,DeepSeek V4,terminus-2,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,GLM 5.2,claude-code,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,GLM 5.2,terminus-2,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,GPT-5.5,codex,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,GPT-5.5,terminus-2,TP,1,software engineering,1
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Gemini 3.1,gemini-cli,TP,1,software engineering,1
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Gemini 3.1,terminus-2,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Kimi K2.6,claude-code,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Kimi K2.6,terminus-2,TP,1,software engineering,1
+swtbenchverified,swtbenchverified-test-runserver-zero-address,MiMo V2.5,terminus-2,TP,1,software engineering,1
+swtbenchverified,swtbenchverified-test-runserver-zero-address,MiMo V2.5,claude-code,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,MiniMax M3,claude-code,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,MiniMax M3,terminus-2,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Opus 4.8,terminus-2,TP,1,software engineering,1
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Opus 4.8,claude-code,TP,1,software engineering,1
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Qwen3.7,terminus-2,TN,0,software engineering,0
+swtbenchverified,swtbenchverified-test-runserver-zero-address,Qwen3.7,claude-code,TN,0,software engineering,0
+tb,tb-dna-insert,DeepSeek V4,terminus-2,TN,0,NA,0
+tb,tb-dna-insert,DeepSeek V4,claude-code,TN,0,NA,0
+tb,tb-dna-insert,GLM 5.2,terminus-2,TP,1,NA,1
+tb,tb-dna-insert,GLM 5.2,claude-code,TN,0,NA,0
+tb,tb-dna-insert,GPT-5.5,codex,TN,0,NA,0
+tb,tb-dna-insert,GPT-5.5,terminus-2,TN,0,NA,0
+tb,tb-dna-insert,Gemini 3.1,terminus-2,TN,0,NA,0
+tb,tb-dna-insert,Gemini 3.1,gemini-cli,TN,0,NA,0
+tb,tb-dna-insert,Kimi K2.6,claude-code,TN,0,NA,0
+tb,tb-dna-insert,Kimi K2.6,terminus-2,TN,0,NA,0
+tb,tb-dna-insert,MiMo V2.5,claude-code,TN,0,NA,0
+tb,tb-dna-insert,MiMo V2.5,terminus-2,TP,1,NA,1
+tb,tb-dna-insert,MiniMax M3,terminus-2,TN,0,NA,0
+tb,tb-dna-insert,MiniMax M3,claude-code,TN,0,NA,0
+tb,tb-dna-insert,Opus 4.8,terminus-2,TN,0,NA,0
+tb,tb-dna-insert,Opus 4.8,claude-code,TP,1,NA,1
+tb,tb-dna-insert,Qwen3.7,claude-code,TN,0,NA,0
+tb,tb-dna-insert,Qwen3.7,terminus-2,TN,0,NA,0
+tb,tb-make-doom-for-mips,DeepSeek V4,claude-code,TN,0,NA,0
+tb,tb-make-doom-for-mips,DeepSeek V4,terminus-2,FP,1,NA,0
+tb,tb-make-doom-for-mips,GLM 5.2,claude-code,TP,1,NA,1
+tb,tb-make-doom-for-mips,GLM 5.2,terminus-2,TN,0,NA,0
+tb,tb-make-doom-for-mips,GPT-5.5,codex,TP,1,NA,1
+tb,tb-make-doom-for-mips,GPT-5.5,terminus-2,TP,1,NA,1
+tb,tb-make-doom-for-mips,Gemini 3.1,gemini-cli,TP,1,NA,1
+tb,tb-make-doom-for-mips,Gemini 3.1,terminus-2,TN,0,NA,0
+tb,tb-make-doom-for-mips,Kimi K2.6,claude-code,TN,0,NA,0
+tb,tb-make-doom-for-mips,Kimi K2.6,terminus-2,FP,1,NA,0
+tb,tb-make-doom-for-mips,MiMo V2.5,claude-code,TN,0,NA,0
+tb,tb-make-doom-for-mips,MiMo V2.5,terminus-2,TN,0,NA,0
+tb,tb-make-doom-for-mips,MiniMax M3,terminus-2,TN,0,NA,0
+tb,tb-make-doom-for-mips,MiniMax M3,claude-code,TN,0,NA,0
+tb,tb-make-doom-for-mips,Opus 4.8,terminus-2,TP,1,NA,1
+tb,tb-make-doom-for-mips,Opus 4.8,claude-code,TP,1,NA,1
+tb,tb-make-doom-for-mips,Qwen3.7,terminus-2,TN,0,NA,0
+tb,tb-make-doom-for-mips,Qwen3.7,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,DeepSeek V4,terminus-2,TN,0,NA,0
+tb,tb-train-fasttext,DeepSeek V4,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,GLM 5.2,terminus-2,TN,0,NA,0
+tb,tb-train-fasttext,GLM 5.2,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,GPT-5.5,codex,TP,1,NA,1
+tb,tb-train-fasttext,GPT-5.5,terminus-2,TP,1,NA,1
+tb,tb-train-fasttext,Gemini 3.1,gemini-cli,TN,0,NA,0
+tb,tb-train-fasttext,Gemini 3.1,terminus-2,TN,0,NA,0
+tb,tb-train-fasttext,Kimi K2.6,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,MiMo V2.5,terminus-2,TN,0,NA,0
+tb,tb-train-fasttext,MiMo V2.5,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,MiniMax M3,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,Opus 4.8,terminus-2,TN,0,NA,0
+tb,tb-train-fasttext,Opus 4.8,claude-code,TN,0,NA,0
+tb,tb-train-fasttext,Qwen3.7,terminus-2,TN,0,NA,0
+tb,tb-train-fasttext,Qwen3.7,claude-code,TN,0,NA,0
+usaco,usaco-assign-cows-to-barns,DeepSeek V4,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,DeepSeek V4,claude-code,FN,0,software engineering,1
+usaco,usaco-assign-cows-to-barns,GLM 5.2,claude-code,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,GLM 5.2,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,GPT-5.5,codex,FN,0,software engineering,1
+usaco,usaco-assign-cows-to-barns,GPT-5.5,terminus-2,FN,0,software engineering,1
+usaco,usaco-assign-cows-to-barns,Gemini 3.1,gemini-cli,FN,0,software engineering,1
+usaco,usaco-assign-cows-to-barns,Gemini 3.1,terminus-2,FN,0,software engineering,1
+usaco,usaco-assign-cows-to-barns,Kimi K2.6,claude-code,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,Kimi K2.6,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,MiMo V2.5,claude-code,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,MiMo V2.5,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,MiniMax M3,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,MiniMax M3,claude-code,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,Opus 4.8,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,Opus 4.8,claude-code,FN,0,software engineering,1
+usaco,usaco-assign-cows-to-barns,Qwen3.7,terminus-2,TN,0,software engineering,0
+usaco,usaco-assign-cows-to-barns,Qwen3.7,claude-code,TN,0,software engineering,0
+widesearch,widesearch-list-bri-projects-2025,DeepSeek V4,terminus-2,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,GPT-5.5,terminus-2,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,GPT-5.5,codex,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Gemini 3.1,terminus-2,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Gemini 3.1,gemini-cli,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Kimi K2.6,terminus-2,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Opus 4.8,terminus-2,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Opus 4.8,claude-code,TN,0,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Qwen3.7,terminus-2,TN,0,agent and tools,0
+sldbench,sldbench-discover-vocab-scaling-law,DeepSeek V4,claude-code,FN,0,science,0
+widesearch,widesearch-list-bri-projects-2025,DeepSeek V4,claude-code,TN,NA,agent and tools,0
+hle,hle-interval-coverage-bound,DeepSeek V4,claude-code,FN,0,knowledge,0
+swebenchpro,swebenchpro-fix-teleport-mtls-ca-limit,DeepSeek V4,claude-code,FN,0,software engineering,0
+algotune,algotune-optimize-matrix-sqrt,DeepSeek V4,claude-code,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,DeepSeek V4,claude-code,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,DeepSeek V4,claude-code,FN,0,software engineering,0
+hle,hle-shock-wave-density-profile,DeepSeek V4,claude-code,FN,0,knowledge,0
+skillsbench,skillsbench-ocr-receipts-to-excel,DeepSeek V4,claude-code,FN,0,agent and tools,0
+algotune,algotune-optimize-outer-product,DeepSeek V4,claude-code,FN,0,software engineering,0
+labbench,labbench-habenula-fluorescence-change,Kimi K2.6,terminus-2,TN,NA,science,0
+tb,tb-train-fasttext,Kimi K2.6,terminus-2,FN,0,NA,1
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Kimi K2.6,terminus-2,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Kimi K2.6,terminus-2,FN,0,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,Kimi K2.6,terminus-2,TN,NA,science,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,GLM 5.2,claude-code,FN,0,software engineering,0
+widesearch,widesearch-list-bri-projects-2025,GLM 5.2,claude-code,TN,NA,agent and tools,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,GLM 5.2,claude-code,FN,0,software engineering,0
+labbench,labbench-count-deg-in-pathway,GLM 5.2,claude-code,TN,NA,science,0
+codepde,codepde-solve-navier-stokes-1d,GLM 5.2,claude-code,TN,NA,science,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Qwen3.7,terminus-2,FN,0,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,Qwen3.7,terminus-2,TN,NA,science,0
+codepde,codepde-solve-navier-stokes-1d,GLM 5.2,terminus-2,TN,NA,science,0
+widesearch,widesearch-list-bri-projects-2025,GLM 5.2,terminus-2,TN,NA,agent and tools,0
+labbench,labbench-habenula-fluorescence-change,GLM 5.2,terminus-2,TN,NA,science,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,GLM 5.2,terminus-2,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,GLM 5.2,terminus-2,FN,0,software engineering,0
+gso,gso-speedup-pandas-period-fmt,MiniMax M3,claude-code,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,MiniMax M3,claude-code,FN,0,software engineering,0
+omnimath,omnimath-find-perfect-square-functions,MiniMax M3,claude-code,FN,0,mathematics and reasoning,0
+hle,hle-fibered-category-schemes,MiniMax M3,claude-code,FN,0,knowledge,0
+algotune,algotune-optimize-outer-product,MiniMax M3,claude-code,FN,0,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,MiniMax M3,claude-code,FN,0,science,0
+widesearch,widesearch-list-bri-projects-2025,MiniMax M3,claude-code,TN,NA,agent and tools,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,MiniMax M3,claude-code,FN,0,software engineering,0
+labbench,labbench-habenula-fluorescence-change,MiMo V2.5,terminus-2,TN,NA,science,0
+widesearch,widesearch-list-bri-projects-2025,MiMo V2.5,terminus-2,TN,NA,agent and tools,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,MiMo V2.5,terminus-2,FN,0,software engineering,0
+widesearch,widesearch-list-bri-projects-2025,MiMo V2.5,claude-code,TN,NA,agent and tools,0
+labbench,labbench-count-deg-in-pathway,MiMo V2.5,claude-code,TN,NA,science,0
+algotune,algotune-optimize-matrix-sqrt,MiMo V2.5,claude-code,FN,0,software engineering,0
+scicode,scicode-tetrahedron-dos-integral,MiMo V2.5,claude-code,FN,0,science,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,MiMo V2.5,claude-code,FN,0,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,MiMo V2.5,claude-code,TN,NA,science,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,DeepSeek V4,terminus-2,FN,0,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,DeepSeek V4,terminus-2,TN,NA,science,0
+tb,tb-train-fasttext,MiniMax M3,terminus-2,FN,0,NA,1
+featurebench,featurebench-add-feature-mlflow-unity-catalog,MiniMax M3,terminus-2,FN,0,software engineering,0
+labbench,labbench-habenula-fluorescence-change,MiniMax M3,terminus-2,TN,NA,science,0
+widesearch,widesearch-list-bri-projects-2025,MiniMax M3,terminus-2,TN,NA,agent and tools,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,MiniMax M3,terminus-2,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Kimi K2.6,claude-code,FN,0,software engineering,0
+widesearch,widesearch-list-bri-projects-2025,Kimi K2.6,claude-code,TN,NA,agent and tools,0
+widesearch,widesearch-list-bri-projects-2025,Qwen3.7,claude-code,TN,NA,agent and tools,0
+featurebench,featurebench-add-feature-mlflow-unity-catalog,Qwen3.7,claude-code,FN,0,software engineering,0
+featurebench,featurebench-add-feature-mlflow-bedrock-autolog,Qwen3.7,claude-code,FN,0,software engineering,0
+gaia,gaia-compare-sciencedirect-domains,Opus 4.8,claude-code,TN,0,agent and tools,0
+gaia,gaia-find-chess-winning-move,Opus 4.8,claude-code,TN,0,agent and tools,0
+codepde,codepde-solve-navier-stokes-1d,GPT-5.5,codex,TN,NA,science,0
+gso,gso-speedup-pandas-period-fmt,Opus 4.8,terminus-2,TN,NA,software engineering,0
+codepde,codepde-solve-navier-stokes-1d,GPT-5.5,terminus-2,TN,NA,science,0
+gaia,gaia-compare-sciencedirect-domains,GPT-5.5,terminus-2,TN,0,agent and tools,0

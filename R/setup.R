@@ -30,6 +30,9 @@ source(here::here("config.R"))
   "variance.R",  # variance components from a fit, as posterior draws
   "gtheory.R",   # G-coefficients, signal-to-noise, D-studies
   "ranks.R",     # latent model effects, posterior ranks, rank correlations
+  "cost.R",      # design cost, reliability-aware allocation, task subsampling
+  "harbor.R",    # the Harbor Index corroboration dataset
+  "external.R",  # out-of-panel validation of the latent model effect
   "disco.R",     # nonparametric distance-components decomposition
   "plots.R"      # shared theme, palette, and the paper's figure builders
 )

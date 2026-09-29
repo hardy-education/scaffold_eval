@@ -133,31 +133,37 @@ if (nrow(smallest)) {
 }
 
 
-# ---- Section 5.1: model variation against scaffold variation ---------------
+# ---- Model variation against scaffold variation -----------------------------
 #
-# Two scopes. "benchmark" asks about ranking on a randomly selected benchmark;
-# "task" asks at the level of a single task within one, and so includes the
-# task-indexed interactions.
+# The paper makes a two-part claim here, and the parts point different ways:
+#
+#   main effects       sigma^2_M vs sigma^2_A. Do models differ more than
+#                      scaffolds do on average? The posterior favours neither.
+#   task interactions  sigma^2_IM[B] vs sigma^2_IA[B]. Does the scaffold change
+#                      *which tasks* get solved more than the model does? Yes.
+#
+# Read together: a scaffold can change which tasks a system solves without
+# making it uniformly stronger on the benchmark. Reporting only the first
+# contrast would understate how much the harness matters; reporting only the
+# second would overstate it.
 
-contrasts <- bind_rows(
-  model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "benchmark"),
-  model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "task")
-)
+contrasts <- model_vs_scaffold_contrast(vc, design(1, 1, 1), scope = "both")
 
 for (i in seq_len(nrow(contrasts))) {
   message(sprintf(
-    "P(scaffold variation > model variation), %s scope: %.1f%%  [contrast median %.3f, %d%% HDI %.3f to %.3f]",
-    contrasts$scope[i], 100 * contrasts$p_scaffold_exceeds_model[i],
+    "P(scaffold > model), %-18s %.1f%%  [contrast median %.3f, %d%% HDI %.3f to %.3f]",
+    contrasts$label[i], 100 * contrasts$p_scaffold_exceeds_model[i],
     contrasts$median[i], round(100 * CI_LEVEL),
     contrasts$low[i], contrasts$high[i]
   ))
 }
 
-save_table(select(contrasts, scope, median, mean, low, high,
+save_table(select(contrasts, scope, label, left, right, median, mean, low, high,
                   p_model_exceeds_scaffold, p_scaffold_exceeds_model),
            "table_model_vs_scaffold_contrast",
-           caption = paste("Posterior contrast between model-related and",
-                           "scaffold-related variance shares."))
+           caption = paste("Posterior contrasts between model-related and",
+                           "scaffold-related variance components: main effects",
+                           "and task-indexed interactions."))
 
 for (i in seq_len(nrow(contrasts))) {
   save_figure(plot_model_scaffold_contrast(contrasts[i, ]),
